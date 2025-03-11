@@ -85,7 +85,8 @@ public class Create_League extends AppCompatActivity implements View.OnClickList
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists())
                 {
-                    for (DataSnapshot snap : snapshot.getChildren()) {
+                    for (DataSnapshot snap : snapshot.getChildren())
+                    {
                         leagues.add(snap.getValue(League.class));
                     }
                 }

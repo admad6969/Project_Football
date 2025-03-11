@@ -43,7 +43,7 @@ public class My_Teams extends AppCompatActivity implements View.OnClickListener 
             return insets;
         });
 
-        teamsList = null;
+        teamsList = new ArrayList<>();
 
         rv = (RecyclerView) findViewById(R.id.rv);
         rv.setHasFixedSize(true);
@@ -56,11 +56,9 @@ public class My_Teams extends AppCompatActivity implements View.OnClickListener 
 
 
         btnSearch.setOnClickListener(this);
-
+        var uid = FirebaseAuth.getInstance().getUid();
         firebaseDatabase = FirebaseDatabase.getInstance("https://newpcproject-c165b-default-rtdb.europe-west1.firebasedatabase.app/");
-
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        firebaseDatabase.getReference("Teams").addValueEventListener(new ValueEventListener() {
+        firebaseDatabase.getReference("Teams").child(uid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
