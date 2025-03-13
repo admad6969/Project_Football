@@ -105,7 +105,7 @@ public class Create_League extends AppCompatActivity implements View.OnClickList
     {
         if (v == btnCreate)
         {
-            if (!(etLeagueName.getText().toString().isEmpty()) && !(etDescription.getText().toString().isEmpty()) && (Integer.parseInt( etLeagueCapacity.getText().toString())>1) && (Integer.parseInt( etAdvancers.getText().toString())>1) && (Integer.parseInt( etRelegation.getText().toString())>1) && ((Integer.parseInt(etRelegation.getText().toString()))+(Integer.parseInt(etAdvancers.getText().toString()))) < (Integer.parseInt(etLeagueCapacity.getText().toString())))
+            if (!(etLeagueName.getText().toString().isEmpty()) && !(etDescription.getText().toString().isEmpty()) && (Integer.parseInt( etLeagueCapacity.getText().toString())>0) && (Integer.parseInt( etAdvancers.getText().toString())>0) && (Integer.parseInt( etRelegation.getText().toString())>0 && ((Integer.parseInt(etRelegation.getText().toString()))+(Integer.parseInt(etAdvancers.getText().toString()))) < (Integer.parseInt(etLeagueCapacity.getText().toString()))))
             {
                 String uid = FirebaseAuth.getInstance().getCurrentUser().getUid().toString();
                 String name = etLeagueName.getText().toString();
@@ -118,7 +118,7 @@ public class Create_League extends AppCompatActivity implements View.OnClickList
                 leagues.add(league);
                 ref.setValue(leagues);
                 Toast.makeText(Create_League.this, "League created", Toast.LENGTH_LONG).show();
-
+                finish();
             }
         }
         else if (v==btnLogo)

@@ -1,9 +1,11 @@
 package com.example.project_start;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -45,6 +47,7 @@ public class My_Teams extends AppCompatActivity implements View.OnClickListener 
 
         teamsList = new ArrayList<>();
 
+
         rv = (RecyclerView) findViewById(R.id.rv);
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(this));
@@ -55,7 +58,6 @@ public class My_Teams extends AppCompatActivity implements View.OnClickListener 
         etSearch = (EditText) findViewById(R.id.etSearch);
 
 
-        btnSearch.setOnClickListener(this);
         var uid = FirebaseAuth.getInstance().getUid();
         firebaseDatabase = FirebaseDatabase.getInstance("https://newpcproject-c165b-default-rtdb.europe-west1.firebasedatabase.app/");
         firebaseDatabase.getReference("Teams").child(uid).addValueEventListener(new ValueEventListener() {
@@ -65,7 +67,12 @@ public class My_Teams extends AppCompatActivity implements View.OnClickListener 
                     Team team = dataSnapshot.getValue(Team.class);
                     teamsList.add(team);
                 }
-                Teams_Adapter adapter = new Teams_Adapter(My_Teams.this, teamsList);
+                Teams_Adapter adapter = new Teams_Adapter(My_Teams.this, teamsList, new Teams_Adapter.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(Team team) {
+                        onItemClick2(team);
+                    }
+                });
                 rv.setAdapter(adapter);
             }
 
@@ -76,19 +83,26 @@ public class My_Teams extends AppCompatActivity implements View.OnClickListener 
     });
     }
 
+    public void onItemClick2(Team team)
+    {
+        Intent tmpIntent;
+        tmpIntent= new Intent(My_Teams.this, NonLeagueTeam.class);
+        tmpIntent.putExtra("currentName",team.getTeamName());
+        startActivity(tmpIntent);
+    }
 
     @Override
     public void onClick(View v)
     {
-        if (v == btnSearch)
+        /*if (v == btnSearch)
         {
             String search = etSearch.getText().toString();
             if (search.isEmpty())
                 getTeams();
 
-            //else
-                //getPostsBySearch(search);
-        }
+            else
+                getPostsBySearch(search);
+        }*/
     }
 
     public void getTeams(){
@@ -100,7 +114,12 @@ public class My_Teams extends AppCompatActivity implements View.OnClickListener 
                     Team team = data.getValue(Team.class);
                     teamsList.add(team);
                 }
-                Teams_Adapter adapter = new Teams_Adapter(My_Teams.this, teamsList);
+                Teams_Adapter adapter = new Teams_Adapter(My_Teams.this, teamsList, new Teams_Adapter.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(Team team) {
+
+                    }
+                });
                 rv.setAdapter(adapter);
             }
 
@@ -132,7 +151,4 @@ public class My_Teams extends AppCompatActivity implements View.OnClickListener 
             }
         });
     }*/
-
-
-
 }

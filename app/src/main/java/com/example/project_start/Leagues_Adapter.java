@@ -17,10 +17,19 @@ public class Leagues_Adapter extends RecyclerView.Adapter<Leagues_Adapter.PostVi
 
     private Context context;
     private List<League> leaguesList;
+    private OnItemClickListener listener;
 
-    public Leagues_Adapter(Context newContext , List<League>newLeaguesList){
+
+
+    public interface OnItemClickListener
+    {
+        void onItemClick(League league);
+    }
+
+    public Leagues_Adapter(Context newContext , List<League>newLeaguesList, OnItemClickListener listener){
         this.context = newContext;
         this.leaguesList = newLeaguesList;
+        this.listener = listener;
     }
 
     @NonNull
@@ -39,6 +48,12 @@ public class Leagues_Adapter extends RecyclerView.Adapter<Leagues_Adapter.PostVi
         if(!league.getLogo().isEmpty()){
             holder.ivLeagueLogo.setImageBitmap(league.picToBitmap());
         }
+        holder.itemView.setOnClickListener(view -> {
+            if (listener != null)
+            {
+                listener.onItemClick(league);
+            }
+        });
 
     }
 

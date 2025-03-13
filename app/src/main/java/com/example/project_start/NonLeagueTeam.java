@@ -1,10 +1,9 @@
 package com.example.project_start;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -12,8 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -23,58 +20,53 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class My_Leagues extends AppCompatActivity implements View.OnClickListener {
+public class NonLeagueTeam extends AppCompatActivity {
 
-
-    RecyclerView rv;
-    ArrayList<League> leaguesList;
+    ArrayList<Team> teamsList;
     FirebaseDatabase firebaseDatabase;
-    Button btnSearch;
-    EditText etSearch;
     FirebaseAuth firebaseAuth;
+    TextView captain,manager,name;
+    ImageView logo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_my_leagues);
+        setContentView(R.layout.activity_non_league_team);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        teamsList = new ArrayList<>();
+
+        Intent intent = getIntent();
+        String currentName = intent.getStringExtra("currentName");
+        name = (TextView) findViewById(R.id.tvTeamName);
+        captain = (TextView) findViewById(R.id.tvCaptain);
+        manager = (TextView) findViewById(R.id.tvManager);
+        logo = (ImageView) findViewById(R.id.ivLogo);
 
 
-        leaguesList = new ArrayList<>();
-
-        rv = (RecyclerView) findViewById(R.id.rv);
-        rv.setHasFixedSize(true);
-        rv.setLayoutManager(new LinearLayoutManager(this));
-
-        firebaseAuth = FirebaseAuth.getInstance();
-
-        btnSearch = (Button) findViewById(R.id.btnSearch);
-        etSearch = (EditText) findViewById(R.id.etSearch);
 
 
-        btnSearch.setOnClickListener(this);
         var uid = FirebaseAuth.getInstance().getUid();
         firebaseDatabase = FirebaseDatabase.getInstance("https://newpcproject-c165b-default-rtdb.europe-west1.firebasedatabase.app/");
-        firebaseDatabase.getReference("Leagues").child(uid).addValueEventListener(new ValueEventListener() {
+        firebaseDatabase.getReference("Teams").child(uid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    League league = dataSnapshot.getValue(League.class);
-                    leaguesList.add(league);
+                    Team team = dataSnapshot.getValue(Team.class);
+                    teamsList.add(team);
                 }
-                Leagues_Adapter adapter = new Leagues_Adapter(My_Leagues.this, leaguesList, new Leagues_Adapter.OnItemClickListener(){
-                    @Override
-                    public void onItemClick(League league) {
-                        onItemClick2(league);
-                    }
-                });
-                rv.setAdapter(adapter);
+                Team team = findTeamByName(currentName, teamsList);
+                manager.setText(team.getManager());
+                captain.setText(team.getCaptain());
+                name.setText(team.getTeamName());
+                logo.setImageBitmap(team.picToBitmap());
+
             }
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -82,14 +74,16 @@ public class My_Leagues extends AppCompatActivity implements View.OnClickListene
             }
         });
     }
-    public void onItemClick2(League league)
+
+    public Team findTeamByName(String currentName, ArrayList<Team> teamsList)
     {
-        Toast.makeText(My_Leagues.this, "wtf", Toast.LENGTH_LONG).show();
-
-    }
-
-    @Override
-    public void onClick(View v) {
-
+        boolean flag = true;
+        ArrayList<Team> copyTeamsList = teamsList;
+        for (int i = 0; i < copyTeamsList.size(); i++)
+        {
+            if (copyTeamsList.get(i).getTeamName().equals(currentName))
+                return copyTeamsList.get(i);
+        }
+        return new Team();
     }
 }
