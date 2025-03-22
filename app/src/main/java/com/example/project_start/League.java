@@ -5,11 +5,13 @@ import android.graphics.BitmapFactory;
 import android.util.Base64;
 
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 
 public class League {
     private String uid, LeagueName, description, logo;
     private int capacity, advancers, relegation;
     private boolean Started;
+    private ArrayList<Team> TeamsInLeague;
 
     public League()
     {
@@ -25,6 +27,15 @@ public class League {
         this.advancers = copyAdvance;
         this.relegation = copyRelegated;
         this.Started = false;
+        this.TeamsInLeague = new  ArrayList<Team>();
+    }
+
+    public ArrayList<Team> getTeamsInLeague() {
+        return TeamsInLeague;
+    }
+
+    public void setTeamsInLeague(ArrayList<Team> teamsInLeague) {
+        TeamsInLeague = teamsInLeague;
     }
 
     public void setAdvancers(int advancers) {

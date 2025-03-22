@@ -8,6 +8,8 @@ import java.io.ByteArrayOutputStream;
 
 public class Team {
     private String uid, teamName, manager, captain, logo;
+    private League inLeague;
+    private boolean accepted;
 
 
     public Team()
@@ -20,6 +22,25 @@ public class Team {
         this.manager = copyManager;
         this.captain = copyCaptain;
         this.teamName = copyName;
+        this.inLeague = new League();
+        this.accepted = false;
+    }
+
+    public void setAccepted(boolean accepted) {
+        this.accepted = accepted;
+    }
+
+    public boolean getAccepted(){
+        return this.accepted;
+    }
+
+
+    public void setInLeague(League inLeague) {
+        this.inLeague = inLeague;
+    }
+
+    public League getInLeague() {
+        return inLeague;
     }
 
     public void setCaptain(String captain) {

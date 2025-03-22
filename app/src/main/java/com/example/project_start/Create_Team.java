@@ -103,18 +103,26 @@ public class Create_Team extends AppCompatActivity implements View.OnClickListen
         {
             if (!(etTeamName.getText().toString().isEmpty()) && !(etMananger.getText().toString().isEmpty() && !(etCaptain .getText().toString().isEmpty())))
             {
-                String uid = FirebaseAuth.getInstance().getCurrentUser().getUid().toString();
-                String name = etTeamName.getText().toString();
-                String manager = etMananger.getText().toString();
-                String captain = etCaptain.getText().toString();
-                Team team = new Team(uid, name, captain, manager);
-                team.setPicAsString(php);
-                teams.add(team);
-                ref.setValue(teams);
+                if (searchForName(teams,etTeamName.getText().toString()))
+                {
+                    String uid = FirebaseAuth.getInstance().getCurrentUser().getUid().toString();
+                    String name = etTeamName.getText().toString();
+                    String manager = etMananger.getText().toString();
+                    String captain = etCaptain.getText().toString();
+                    Team team = new Team(uid, name, captain, manager);
+                    team.setPicAsString(php);
+                    teams.add(team);
+                    ref.setValue(teams);
+                    Toast.makeText(Create_Team.this, "team created", Toast.LENGTH_LONG).show();
+                    finish();
+                }
+                else
+                    Toast.makeText(Create_Team.this, "you already have a team with the same name", Toast.LENGTH_LONG).show();
 
-                Toast.makeText(Create_Team.this, "team created", Toast.LENGTH_LONG).show();
-                finish();
             }
+            else
+                Toast.makeText(Create_Team.this, "must fill all info", Toast.LENGTH_LONG).show();
+
         }
         else if (v==btnLogo)
         {
@@ -145,4 +153,14 @@ public class Create_Team extends AppCompatActivity implements View.OnClickListen
                     }
     });
     }
+    public boolean searchForName(ArrayList<Team> teamsList, String name)
+    {
+        for (int i = 0; i < teamsList.size(); i++)
+        {
+            if (teamsList.get(i).getTeamName().equals(name))
+                return false;
+        }
+        return true;
+    }
+
 }

@@ -107,19 +107,27 @@ public class Create_League extends AppCompatActivity implements View.OnClickList
         {
             if (!(etLeagueName.getText().toString().isEmpty()) && !(etDescription.getText().toString().isEmpty()) && (Integer.parseInt( etLeagueCapacity.getText().toString())>0) && (Integer.parseInt( etAdvancers.getText().toString())>0) && (Integer.parseInt( etRelegation.getText().toString())>0 && ((Integer.parseInt(etRelegation.getText().toString()))+(Integer.parseInt(etAdvancers.getText().toString()))) < (Integer.parseInt(etLeagueCapacity.getText().toString()))))
             {
-                String uid = FirebaseAuth.getInstance().getCurrentUser().getUid().toString();
-                String name = etLeagueName.getText().toString();
-                String description = etDescription.getText().toString();
-                int cap = Integer.parseInt( etLeagueCapacity.getText().toString());
-                int advancers = Integer.parseInt( etAdvancers.getText().toString());
-                int relegation = Integer.parseInt( etRelegation.getText().toString());
-                League league = new League(uid, name, description, cap, advancers, relegation);
-                league.setPicAsString(php);
-                leagues.add(league);
-                ref.setValue(leagues);
-                Toast.makeText(Create_League.this, "League created", Toast.LENGTH_LONG).show();
-                finish();
+                if (searchForName(leagues, etLeagueName.getText().toString()))
+                {
+                    String uid = FirebaseAuth.getInstance().getCurrentUser().getUid().toString();
+                    String name = etLeagueName.getText().toString();
+                    String description = etDescription.getText().toString();
+                    int cap = Integer.parseInt(etLeagueCapacity.getText().toString());
+                    int advancers = Integer.parseInt(etAdvancers.getText().toString());
+                    int relegation = Integer.parseInt(etRelegation.getText().toString());
+                    League league = new League(uid, name, description, cap, advancers, relegation);
+                    league.setPicAsString(php);
+                    leagues.add(league);
+                    ref.setValue(leagues);
+                    Toast.makeText(Create_League.this, "League created", Toast.LENGTH_LONG).show();
+                    finish();
+                }
+                else
+                    Toast.makeText(Create_League.this, "you already have a League with the same name", Toast.LENGTH_LONG).show();
             }
+            else
+                Toast.makeText(Create_League.this, "must fill all info", Toast.LENGTH_LONG).show();
+
         }
         else if (v==btnLogo)
         {
@@ -150,5 +158,16 @@ public class Create_League extends AppCompatActivity implements View.OnClickList
                         }
                     }
                 });
+
+    }
+
+    public boolean searchForName(ArrayList<League> leagueList, String name)
+    {
+        for (int i = 0; i < leagueList.size(); i++)
+        {
+            if (leagueList.get(i).getLeagueName().equals(name))
+                return false;
+        }
+        return true;
     }
 }

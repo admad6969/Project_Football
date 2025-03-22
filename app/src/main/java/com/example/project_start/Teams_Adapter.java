@@ -1,6 +1,7 @@
 package com.example.project_start;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +41,21 @@ public class Teams_Adapter extends RecyclerView.Adapter<Teams_Adapter.PostViewHo
     public void onBindViewHolder(@NonNull PostViewHolder holder, int position) {
         Team team = teamList.get(position);
         holder.tvTeamName.setText(team.getTeamName());
+        if (team.getAccepted())
+        {
+            holder.tvInLeague.setText("In League");
+            holder.tvInLeague.setTextColor(Color.parseColor("#008000"));
+        }
+        else if (team.getInLeague().getCapacity()!=0)
+        {
+            holder.tvInLeague.setText("invite pending");
+            holder.tvInLeague.setTextColor(Color.parseColor("#FFc107"));
+        }
+        else if (team.getInLeague().getCapacity() == 0)
+        {
+            holder.tvInLeague.setText("not in League");
+            holder.tvInLeague.setTextColor(Color.parseColor("#C41E3A"));
+        }
         if(!team.getLogo().isEmpty()){
             holder.ivTeamLogo.setImageBitmap(team.picToBitmap());
         }
@@ -58,13 +74,14 @@ public class Teams_Adapter extends RecyclerView.Adapter<Teams_Adapter.PostViewHo
     }
 
     class PostViewHolder extends RecyclerView.ViewHolder {
-        TextView tvTeamName;
+        TextView tvTeamName,tvInLeague;
         ImageView ivTeamLogo;
 
         public PostViewHolder(@NonNull View itemView) {
             super(itemView);
             tvTeamName = (TextView) itemView.findViewById(R.id.tvTeamName);
             ivTeamLogo = (ImageView) itemView.findViewById(R.id.ivLogo);
+            tvInLeague = (TextView) itemView.findViewById(R.id.tvInLeague);
         }
     }
 

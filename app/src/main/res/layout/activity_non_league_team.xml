@@ -25,7 +25,7 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:hint="team Manager"
-      android:textSize="40sp"
+      android:textSize="30sp"
       android:id="@+id/tvManager"
       android:layout_marginLeft="10dp"
       android:layout_marginTop="5dp"
@@ -36,7 +36,7 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:hint="team captain"
-      android:textSize="40sp"
+      android:textSize="30sp"
       android:id="@+id/tvCaptain"
       android:layout_marginLeft="10dp"
       android:layout_marginTop="5dp"
@@ -50,7 +50,110 @@
       />
 
 
+  <EditText
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:hint="Search a team"
+      android:textSize="20sp"
+      android:id="@+id/etSearch"
+      android:layout_marginLeft="10dp"
+      android:layout_marginTop="5dp"
+      />
+
+  <Button
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Search"
+      android:textSize="20sp"
+      android:id="@+id/btnSearch"
+      android:layout_marginLeft="10dp"
+      />
 
 
+  <FrameLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      >
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rv"
+        android:layout_margin="10dp"
+        android:visibility="visible"
+        />
+    <LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".NonLeagueTeam"
+    android:orientation="vertical"
+    android:layout_gravity="center|top"
+    android:id="@+id/linier2"
+    android:visibility="gone"
+    >
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="invite pending"
+          android:textSize="40dp"
+          android:textColor="@color/black"
+          android:id="@+id/tvpending"
+          android:layout_marginLeft="10dp"
+          android:layout_marginTop="5dp"
+          android:layout_gravity="center"
+          android:textAlignment="center"
+          />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="team name"
+        android:textSize="40dp"
+        android:id="@+id/tvLeagueName"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:textAlignment="center"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="league cap"
+        android:textSize="40sp"
+        android:id="@+id/tvCapacity"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        />
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:id="@+id/ivLeagueLogo"
+        android:layout_gravity="center"
+        />
+
+      <Button
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="change league request"
+          android:textSize="20sp"
+          android:id="@+id/btnChangeLeague"
+          android:layout_marginLeft="10dp"
+          android:layout_gravity="center"
+          android:paddingTop="10dp"
+          />
+
+
+    </LinearLayout>
+
+
+
+
+  </FrameLayout>
 
 </LinearLayout>
