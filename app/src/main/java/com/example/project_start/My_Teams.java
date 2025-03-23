@@ -70,6 +70,14 @@ public class My_Teams extends AppCompatActivity implements View.OnClickListener 
             tmpIntent.putExtra("currentName", team.getTeamName());
             startActivity(tmpIntent);
         }
+        if (team.getAccepted())
+        {
+            Intent tmpIntent;
+            tmpIntent = new Intent(My_Teams.this, StartedTeams.class);
+            tmpIntent.putExtra("LeagueUid", team.getInLeague().getUid());
+            tmpIntent.putExtra("LeagueName", team.getInLeague().getLeagueName());
+            startActivity(tmpIntent);
+        }
 
     }
 

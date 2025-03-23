@@ -48,10 +48,10 @@ public class NonLeagueTeam extends AppCompatActivity implements View.OnClickList
     String uid = FirebaseAuth.getInstance().getUid();
     DatabaseReference refrenceRequests,referenceTeams;
     ArrayList<Team> requests;
-    League selectedLeague;
     View dialogView;
     AlertDialog dialog;
     AlertDialog.Builder builder;
+    League selectedLeague;
 
 
     @SuppressLint("MissingInflatedId")
@@ -65,7 +65,6 @@ public class NonLeagueTeam extends AppCompatActivity implements View.OnClickList
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        League selectedLeague = new League();
         team = new Team();
 
         Intent intent = getIntent();
@@ -123,6 +122,8 @@ public class NonLeagueTeam extends AppCompatActivity implements View.OnClickList
                     rv.setVisibility(View.GONE);
                     btnSearch.setVisibility(View.GONE);
                     etSearch.setVisibility(View.GONE);
+
+                    selectedLeague = team.getInLeague();
 
                     tvLeagueName.setText(team.getInLeague().getLeagueName());
                     tvCapacity.setText(Integer.toString(team.getInLeague().getCapacity()));
@@ -204,8 +205,9 @@ public void getRequests(League league)
             {
                 for (DataSnapshot snap : snapshot.getChildren())
                 {
-                        requests.add(snap.getValue(Team.class));
-
+                    var a = snap.getValue(Team.class);
+                    if (a != null && !requests.stream().anyMatch(t -> t.getUid() == a.getUid()))
+                        requests.add(a);
                 }
             }
         }
@@ -222,6 +224,7 @@ public void getRequests(League league)
     public  void onClick2(League league)
     {
         getRequests(league);
+
         accept = (Button) dialogView.findViewById(R.id.btnAccept);
         decline = (Button) dialogView.findViewById(R.id.btnDecline);
         tvRequestTitle = (TextView) dialogView.findViewById(R.id.tvRequestText);
@@ -299,6 +302,10 @@ public void getRequests(League league)
             teamsList.add(team);
             referenceTeams.setValue(teamsList);
 
+
+            //referenceTeams.child(Integer.toString(findTeamLocationByname(team.getTeamName(),teamsList))).child("inLeague").setValue(selectedLeague);
+
+            team.setInLeague(selectedLeague);
             requests.add(team);
             refrenceRequests.setValue(requests);
 
@@ -329,10 +336,8 @@ public void getRequests(League league)
             teamsList.add(team);
             referenceTeams.setValue(teamsList);
 
-
             requests.remove(findTeamLocationByname(currentName,requests));
             refrenceRequests.setValue(requests);
-
 
             linierframe.setVisibility(View.GONE);
             rv.setVisibility(View.VISIBLE);

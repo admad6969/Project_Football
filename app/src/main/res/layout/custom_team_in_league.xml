@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:id="@+id/ivLogo"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="team name"
+        android:paddingTop="50dp"
+        android:id="@+id/tvTeamName"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="num"
+        android:paddingTop="50dp"
+        android:id="@+id/tvPlayed"
+        android:paddingLeft="20dp"
+        />
+
+    <TextView
+        android:textColor="#008000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="num"
+        android:paddingTop="50dp"
+        android:id="@+id/tvWins"
+        android:paddingLeft="20dp"
+        />
+
+    <TextView
+        android:textColor="#FFc107"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="num"
+        android:paddingTop="50dp"
+        android:id="@+id/tvDraws"
+        android:paddingLeft="20dp"
+        />
+
+    <TextView
+        android:id="@+id/tvLosses"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingTop="50dp"
+        android:text="num"
+        android:textColor="#C41E3A"
+        android:textSize="30sp" />
+
+
+
+
+</LinearLayout>

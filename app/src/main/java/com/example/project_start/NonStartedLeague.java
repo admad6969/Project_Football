@@ -112,7 +112,9 @@ public class NonStartedLeague extends AppCompatActivity implements View.OnClickL
                 for (DataSnapshot dataSnapshot : snapshot.getChildren())
                 {
                     Team team = dataSnapshot.getValue(Team.class);
-                    requests.add(team);
+                    if (team != null && !requests.stream().anyMatch(t -> t.getUid() == team.getUid()))
+                        requests.add(team);
+
                 }
 
 
@@ -194,12 +196,9 @@ public class NonStartedLeague extends AppCompatActivity implements View.OnClickL
                     teamsList.add(team);
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
-
         });
     }
 
@@ -240,6 +239,11 @@ public class NonStartedLeague extends AppCompatActivity implements View.OnClickL
             referenceTeams.setValue(teamsList);
 
             ArrayList<Team> tempList = selectedLeague.getTeamsInLeague();
+            if (tempList.get(0).getTeamName().equals(""))
+            {
+                tempList.remove(0);
+            }
+
             tempList.add(selectedTeam);
             selectedLeague.setTeamsInLeague(tempList);
             leaguesList.remove(findLeagueLocationByname(selectedLeague.getLeagueName(),leaguesList));

@@ -115,7 +115,15 @@ public class Create_League extends AppCompatActivity implements View.OnClickList
                     int cap = Integer.parseInt(etLeagueCapacity.getText().toString());
                     int advancers = Integer.parseInt(etAdvancers.getText().toString());
                     int relegation = Integer.parseInt(etRelegation.getText().toString());
+
                     League league = new League(uid, name, description, cap, advancers, relegation);
+
+                    ArrayList<Team> tempList = new ArrayList<>();
+                    Team tempTeam = new Team();
+                    tempTeam.setTeamName("");
+                    tempList.add(tempTeam);
+                    league.setTeamsInLeague(tempList);
+
                     league.setPicAsString(php);
                     leagues.add(league);
                     ref.setValue(leagues);

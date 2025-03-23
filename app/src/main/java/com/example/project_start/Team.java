@@ -9,6 +9,7 @@ import java.io.ByteArrayOutputStream;
 public class Team {
     private String uid, teamName, manager, captain, logo;
     private League inLeague;
+    private int wins , losses, draws, matchesPlayed;
     private boolean accepted;
 
 
@@ -24,6 +25,42 @@ public class Team {
         this.teamName = copyName;
         this.inLeague = new League();
         this.accepted = false;
+        this.matchesPlayed = 0;
+        this.wins = 0;
+        this.losses = 0;
+        this.draws = 0;
+    }
+
+    public int getDraws() {
+        return draws;
+    }
+
+    public void setDraws(int draws) {
+        this.draws = draws;
+    }
+
+    public int getLosses() {
+        return losses;
+    }
+
+    public void setLosses(int losses) {
+        this.losses = losses;
+    }
+
+    public int getMatchesPlayed() {
+        return matchesPlayed;
+    }
+
+    public void setMatchesPlayed(int matchesPlayed) {
+        this.matchesPlayed = matchesPlayed;
+    }
+
+    public int getWins() {
+        return wins;
+    }
+
+    public void setWins(int wins) {
+        this.wins = wins;
     }
 
     public void setAccepted(boolean accepted) {
