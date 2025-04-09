@@ -150,8 +150,12 @@ public class NonLeagueTeam extends AppCompatActivity implements View.OnClickList
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     for (DataSnapshot data : dataSnapshot.getChildren()) {
                         League league = data.getValue(League.class);
-                        if (!(league.getUid().equals(uid))) {
+                        if (!(league.getUid().equals(uid)))
+                        {
+                            if (!(league.getStarted()))
+                            {
                             leaguesList.add(league);
+                            }
                         }
                     }
 

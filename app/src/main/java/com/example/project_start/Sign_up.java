@@ -70,7 +70,7 @@ public class Sign_up extends AppCompatActivity implements View.OnClickListener {
         btnPic.setOnClickListener(this);
         btndateOfBirth.setOnClickListener(this);
 
-
+        firebaseAuth = FirebaseAuth.getInstance();
 
 
     }
@@ -81,7 +81,8 @@ public class Sign_up extends AppCompatActivity implements View.OnClickListener {
         {
             String em = "";
             String ps = "";
-            if (etEnterUserName != null && !(etEnterUserName.equals("")) && etEnterPass != null && !(etEnterPass.equals("")) && !(etLastName.getText().toString().isEmpty()) && date!=null && bitmap!=null) {
+            if (true) //add checker
+            {
                 em = etEnterUserName.getText().toString();
                 ps = etEnterPass.getText().toString();
 

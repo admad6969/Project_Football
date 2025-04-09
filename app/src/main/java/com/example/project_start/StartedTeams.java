@@ -18,19 +18,17 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class StartedTeams extends AppCompatActivity {
 
     RecyclerView rv;
     League selectedLeague;
     FirebaseDatabase firebaseDatabase;
-    Intent intent;
     String currentName;
     String leagueUid;
     ArrayList<League> leaguesList;
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +47,7 @@ public class StartedTeams extends AppCompatActivity {
 
         firebaseDatabase = FirebaseDatabase.getInstance("https://newpcproject-c165b-default-rtdb.europe-west1.firebasedatabase.app/");
 
-        intent = getIntent();
+        Intent intent = getIntent();
         currentName = intent.getStringExtra("LeagueName");
         leagueUid = intent.getStringExtra("LeagueUid");
 
@@ -68,8 +66,17 @@ public class StartedTeams extends AppCompatActivity {
                 }
                 selectedLeague = findLeagueByname(currentName, leaguesList);
                 ArrayList<Team> leaguesTeams = selectedLeague.getTeamsInLeague();
-                TeamsInLeague_Adapter adapter = new TeamsInLeague_Adapter(StartedTeams.this, leaguesTeams, new TeamsInLeague_Adapter.OnItemClickListener() {
 
+                Collections.sort(leaguesTeams, new Comparator<Team>()
+                        {
+                            @Override
+                            public int compare(Team team1, Team team2) {
+                                return Integer.compare(team2.getPoints(), team1.getPoints());
+                            }
+                        });
+
+
+                TeamsInLeague_Adapter adapter = new TeamsInLeague_Adapter(StartedTeams.this, leaguesTeams, new TeamsInLeague_Adapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(Team team) {
 

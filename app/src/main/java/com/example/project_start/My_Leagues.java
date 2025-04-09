@@ -26,7 +26,6 @@ import java.util.ArrayList;
 
 public class My_Leagues extends AppCompatActivity implements View.OnClickListener {
 
-
     RecyclerView rv;
     ArrayList<League> leaguesList;
     FirebaseDatabase firebaseDatabase;
@@ -34,6 +33,7 @@ public class My_Leagues extends AppCompatActivity implements View.OnClickListene
     EditText etSearch;
     FirebaseAuth firebaseAuth;
     final String uid = FirebaseAuth.getInstance().getUid();
+    private ValueEventListener leaguesListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,18 +46,16 @@ public class My_Leagues extends AppCompatActivity implements View.OnClickListene
             return insets;
         });
 
-
         leaguesList = new ArrayList<>();
 
-        rv = (RecyclerView) findViewById(R.id.rv);
+        rv = findViewById(R.id.rv);
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(this));
 
         firebaseAuth = FirebaseAuth.getInstance();
 
-        btnSearch = (Button) findViewById(R.id.btnSearch);
-        etSearch = (EditText) findViewById(R.id.etSearch);
-
+        btnSearch = findViewById(R.id.btnSearch);
+        etSearch = findViewById(R.id.etSearch);
 
         btnSearch.setOnClickListener(this);
 
@@ -66,7 +64,7 @@ public class My_Leagues extends AppCompatActivity implements View.OnClickListene
     }
 
     public void getLeagues() {
-        firebaseDatabase.getReference("Leagues").child(uid).addValueEventListener(new ValueEventListener() {
+        leaguesListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 leaguesList = new ArrayList<>();
@@ -74,7 +72,8 @@ public class My_Leagues extends AppCompatActivity implements View.OnClickListene
                     League league = data.getValue(League.class);
                     leaguesList.add(league);
                 }
-                Leagues_Adapter adapter = new Leagues_Adapter(My_Leagues.this, leaguesList, new Leagues_Adapter.OnItemClickListener() {
+
+                MyLeagues_Adapter adapter = new MyLeagues_Adapter(My_Leagues.this, leaguesList, new MyLeagues_Adapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(League league) {
                         onItemClick2(league);
@@ -85,48 +84,71 @@ public class My_Leagues extends AppCompatActivity implements View.OnClickListene
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
-        });
+        };
+
+        firebaseDatabase.getReference("Leagues").child(uid).addValueEventListener(leaguesListener);
     }
 
-        public void onItemClick2 (League league)
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (leaguesListener != null) {
+            firebaseDatabase.getReference("Leagues").child(uid).removeEventListener(leaguesListener);
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (leaguesListener != null) {
+            firebaseDatabase.getReference("Leagues").child(uid).removeEventListener(leaguesListener);
+        }
+    }
+
+    public void onItemClick2(League league)
+    {
+        if (league.getStarted())
         {
-            Intent tmpIntent;
-            tmpIntent = new Intent(My_Leagues.this, NonStartedLeague.class);
-            tmpIntent.putExtra("currentName", league.getLeagueName());
-            startActivity(tmpIntent);
+            Intent intent = new Intent(My_Leagues.this, StartedLeague.class);
+            intent.putExtra("LeagueName", league.getLeagueName());
+            intent.putExtra("LeagueUid", league.getUid());
+            startActivity(intent);
         }
-
-        @Override
-        public void onClick (View v){
-            if (v == btnSearch)
-            {
-                String search = etSearch.getText().toString();
-                if (search.isEmpty())
-                    getLeagues();
-                else
-                    getLeagueBySearch(search);
-            }
+        else
+        {
+            Intent intent = new Intent(My_Leagues.this, NonStartedLeague.class);
+            intent.putExtra("currentName", league.getLeagueName());
+            startActivity(intent);
         }
+    }
 
-    public void getLeagueBySearch(String search){
+    @Override
+    public void onClick(View v) {
+        if (v == btnSearch) {
+            String search = etSearch.getText().toString();
+            if (search.isEmpty())
+                getLeagues();
+            else
+                getLeagueBySearch(search);
+        }
+    }
+
+    public void getLeagueBySearch(String search) {
         firebaseDatabase.getReference("Leagues").child(uid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 leaguesList = new ArrayList<>();
-                for(DataSnapshot data : snapshot.getChildren()){
-                    League league= data.getValue(League.class);
-                    if(league.getLeagueName().equalsIgnoreCase(search)){
+                for (DataSnapshot data : snapshot.getChildren()) {
+                    League league = data.getValue(League.class);
+                    if (league.getLeagueName().equalsIgnoreCase(search)) {
                         leaguesList.add(league);
                     }
                 }
-                if (leaguesList.size()==0)
-                {
+                if (leaguesList.size() == 0) {
                     Toast.makeText(My_Leagues.this, "League name not found", Toast.LENGTH_LONG).show();
                     getLeagues();
-                }
-                else {
+                } else {
                     Leagues_Adapter adapter = new Leagues_Adapter(My_Leagues.this, leaguesList, new Leagues_Adapter.OnItemClickListener() {
                         @Override
                         public void onItemClick(League league) {
@@ -139,8 +161,7 @@ public class My_Leagues extends AppCompatActivity implements View.OnClickListene
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
     }
-    }
+}

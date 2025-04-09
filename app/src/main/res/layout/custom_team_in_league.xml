@@ -27,7 +27,17 @@
         android:text="num"
         android:paddingTop="50dp"
         android:id="@+id/tvPlayed"
-        android:paddingLeft="20dp"
+        android:paddingLeft="22dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="num"
+        android:paddingTop="50dp"
+        android:id="@+id/tvPoints"
+        android:paddingLeft="18dp"
         />
 
     <TextView
@@ -38,7 +48,7 @@
         android:text="num"
         android:paddingTop="50dp"
         android:id="@+id/tvWins"
-        android:paddingLeft="20dp"
+        android:paddingLeft="35dp"
         />
 
     <TextView
@@ -49,14 +59,14 @@
         android:text="num"
         android:paddingTop="50dp"
         android:id="@+id/tvDraws"
-        android:paddingLeft="20dp"
+        android:paddingLeft="10dp"
         />
 
     <TextView
         android:id="@+id/tvLosses"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="20dp"
+        android:paddingLeft="10dp"
         android:paddingTop="50dp"
         android:text="num"
         android:textColor="#C41E3A"

@@ -27,13 +27,37 @@
         />
 
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="450dp"
+        android:orientation="horizontal"
+        >
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:id="@+id/rvRequests"
+            android:layout_marginLeft="10dp"
+            />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:id="@+id/rvTeamsInLeaue"
+            android:layout_margin="0dp"
+            />
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/rvRequests"
-        android:layout_margin="10dp"
+        android:layout_gravity="center"
+        android:text="Start league"
+        android:layout_marginTop="30dp"
+        android:id="@+id/btnStart"
         />
+
+
 
 </LinearLayout>

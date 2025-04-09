@@ -9,13 +9,13 @@ import java.io.ByteArrayOutputStream;
 public class Team {
     private String uid, teamName, manager, captain, logo;
     private League inLeague;
-    private int wins , losses, draws, matchesPlayed;
+    private int wins , losses, draws, matchesPlayed, points;
     private boolean accepted;
 
 
     public Team()
     {
-
+        this.teamName = "";
     }
     public Team(String copyUid, String copyName, String copyCaptain, String copyManager)
     {
@@ -29,6 +29,15 @@ public class Team {
         this.wins = 0;
         this.losses = 0;
         this.draws = 0;
+        this.points = 0;
+    }
+
+    public int getPoints() {
+        return points;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
     }
 
     public int getDraws() {

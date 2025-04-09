@@ -41,6 +41,7 @@ public class TeamsInLeague_Adapter extends RecyclerView.Adapter<TeamsInLeague_Ad
     public void onBindViewHolder(@NonNull PostViewHolder holder, int position) {
         Team team = teamList.get(position);
         holder.tvTeamName.setText(team.getTeamName());
+        holder.tvPoints.setText(Integer.toString(team.getPoints()));
         holder.tvPlayed.setText(Integer.toString(team.getMatchesPlayed()));
         holder.tvWins.setText(Integer.toString(team.getWins()));
         holder.tvDraws.setText(Integer.toString(team.getDraws()));
@@ -63,17 +64,19 @@ public class TeamsInLeague_Adapter extends RecyclerView.Adapter<TeamsInLeague_Ad
     }
 
     class PostViewHolder extends RecyclerView.ViewHolder {
-        TextView tvTeamName,tvPlayed, tvWins, tvDraws, tvLosses;
+        TextView tvTeamName,tvPlayed, tvWins, tvDraws, tvLosses, tvPoints;
         ImageView ivTeamLogo;
 
         public PostViewHolder(@NonNull View itemView) {
             super(itemView);
+            tvPoints = (TextView) itemView.findViewById(R.id.tvPoints);
             tvTeamName = (TextView) itemView.findViewById(R.id.tvTeamName);
             tvPlayed  = (TextView) itemView.findViewById(R.id.tvPlayed);
             tvWins = (TextView) itemView.findViewById(R.id.tvWins);
             tvDraws = (TextView) itemView.findViewById(R.id.tvDraws);
             tvLosses = (TextView) itemView.findViewById(R.id.tvLosses);
             ivTeamLogo = (ImageView) itemView.findViewById(R.id.ivLogo);
+
         }
     }
 }
