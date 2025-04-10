@@ -95,10 +95,10 @@ public class My_Teams extends AppCompatActivity implements View.OnClickListener 
     }
 
     public void getTeams(){
-        teamsList = new ArrayList<>();
         firebaseDatabase.getReference("Teams").child(uid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                teamsList = new ArrayList<>();
                 for(DataSnapshot data : snapshot.getChildren()){
                     Team team = data.getValue(Team.class);
                     teamsList.add(team);

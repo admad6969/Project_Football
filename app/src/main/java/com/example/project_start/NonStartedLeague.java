@@ -415,7 +415,12 @@ public class NonStartedLeague extends AppCompatActivity implements View.OnClickL
                 leaguesList.add(selectedLeague);
                 refrenceLeagues.setValue(leaguesList);
 
-                getTeamsInSelectedLeague(selectedLeague.getLeagueName());
+                //getTeamsInSelectedLeague(selectedLeague.getLeagueName());
+
+                Intent intent = new Intent(NonStartedLeague.this, StartedLeague.class);
+                intent.putExtra("LeagueName", selectedLeague.getLeagueName());
+                intent.putExtra("LeagueUid", selectedLeague.getUid());
+                startActivity(intent);
             }
         }
         if (v==btnRemoveTeam)

@@ -20,8 +20,10 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
@@ -46,6 +48,12 @@ public class StartedLeague extends AppCompatActivity implements View.OnClickList
     ImageButton btnDialogMinusMp, btnDialogMinusPts, btnDialogMinusWins, btnDialogMinusDraws, btnDialogMinusLosses;
     Button btnDialogConfrim;
     ImageView ivDialogLogo;
+    int mp, pts, w, d, l;
+    Team selectedTeam;
+    ArrayList<Team> leaguesTeams;
+    String uid = FirebaseAuth.getInstance().getUid();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,7 +93,7 @@ public class StartedLeague extends AppCompatActivity implements View.OnClickList
                     leaguesList.add(league);
                 }
                 selectedLeague = findLeagueByname(currentName, leaguesList);
-                ArrayList<Team> leaguesTeams = selectedLeague.getTeamsInLeague();
+                leaguesTeams = selectedLeague.getTeamsInLeague();
 
                 Collections.sort(leaguesTeams, new Comparator<Team>()
                 {
@@ -126,13 +134,15 @@ public class StartedLeague extends AppCompatActivity implements View.OnClickList
 
     public void onClickTeam(Team team)
     {
+        selectedTeam = team;
+
         tvDialogTeamName = (TextView) dialogView.findViewById(R.id.tvDialogTeamName);
         tvDialogMp = (TextView) dialogView.findViewById(R.id.tvMp);
         tvDialogPts = (TextView) dialogView.findViewById(R.id.tvPts);
         tvDialogWins = (TextView) dialogView.findViewById(R.id.tvWins);
         tvDialogDraws = (TextView) dialogView.findViewById(R.id.tvDraws);
         tvDialogLosees = (TextView) dialogView.findViewById(R.id.tvLosses);
-        btnDialogConfrim  = (Button) dialogView.findViewById(R.id.btnDecline);
+        btnDialogConfrim  = (Button) dialogView.findViewById(R.id.btnDialogConfirm);
         ivDialogLogo = (ImageView) dialogView.findViewById(R.id.ivLogo);
 
         btnDialogPlusMp = (ImageButton) dialogView.findViewById(R.id.IbPlusMp);
@@ -148,7 +158,6 @@ public class StartedLeague extends AppCompatActivity implements View.OnClickList
         btnDialogMinusLosses = (ImageButton) dialogView.findViewById(R.id.IbMinusL);
 
 
-        int mp, pts, w, d, l;
         mp = team.getMatchesPlayed();
         pts = team.getPoints();
         w = team.getWins();
@@ -157,11 +166,13 @@ public class StartedLeague extends AppCompatActivity implements View.OnClickList
 
         ivDialogLogo.setImageBitmap(team.picToBitmap());
         tvDialogTeamName.setText(team.getTeamName());
-        tvDialogMp.setText(mp);
-        tvDialogPts.setText(pts);
-        tvDialogWins.setText(w);
-        tvDialogDraws.setText(d);
-        tvDialogLosees.setText(l);
+        tvDialogMp.setText(Integer.toString(mp));
+        tvDialogPts.setText(Integer.toString(pts));
+        tvDialogWins.setText(Integer.toString(w));
+        tvDialogDraws.setText(Integer.toString(d));
+        tvDialogLosees.setText(Integer.toString(l));
+
+        dialog.show();
 
         btnDialogMinusLosses.setOnClickListener(this);
         btnDialogMinusDraws.setOnClickListener(this);
@@ -183,47 +194,127 @@ public class StartedLeague extends AppCompatActivity implements View.OnClickList
     {
         if (v==btnDialogConfrim)
         {
+            DatabaseReference refrenceLeagues = firebaseDatabase.getReference("Leagues").child(uid);
 
+            selectedTeam.setPoints(pts);
+            selectedTeam.setMatchesPlayed(mp);
+            selectedTeam.setWins(w);
+            selectedTeam.setDraws(d);
+            selectedTeam.setLosses(l);
+
+            leaguesTeams.set(findTeamLocationByname(selectedTeam.getTeamName(),leaguesTeams),selectedTeam);
+            selectedLeague.setTeamsInLeague(leaguesTeams);
+            leaguesList.set(findLeagueLocationByname(selectedLeague.getLeagueName(),leaguesList), selectedLeague);
+
+            refrenceLeagues.setValue(leaguesList);
+
+            dialog.dismiss();
         }
         if (v==btnDialogPlusLosses)
         {
-
+            l++;
+            mp++;
+            tvDialogLosees.setText(Integer.toString(l));
+            tvDialogMp.setText(Integer.toString(mp));
         }
         if (v==btnDialogPlusDraws)
         {
-
+            d++;
+            mp++;
+            pts++;
+            tvDialogDraws.setText(Integer.toString(d));
+            tvDialogMp.setText(Integer.toString(mp));
+            tvDialogPts.setText(Integer.toString(pts));
         }
         if (v==btnDialogPlusWins)
         {
-
+            w++;
+            mp++;
+            pts = pts+3;
+            tvDialogWins.setText(Integer.toString(w));
+            tvDialogMp.setText(Integer.toString(mp));
+            tvDialogPts.setText(Integer.toString(pts));
         }
         if (v==btnDialogPlusMp)
         {
-
+            mp++;
+            tvDialogMp.setText(Integer.toString(mp));
         }
         if (v==btnDialogPlusPts)
         {
-
+            pts++;
+            tvDialogPts.setText(Integer.toString(pts));
         }
         if (v==btnDialogMinusPts)
         {
-
+            pts--;
+            tvDialogPts.setText(Integer.toString(pts));
         }
         if (v==btnDialogMinusMp)
         {
-
+            if (mp>0)
+            {
+                mp--;
+                tvDialogMp.setText(Integer.toString(mp));
+            }
         }
         if (v==btnDialogMinusWins)
         {
-
+            if (w>0)
+            {
+                w--;
+                mp--;
+                pts = pts - 3;
+                tvDialogWins.setText(Integer.toString(w));
+                tvDialogMp.setText(Integer.toString(mp));
+                tvDialogPts.setText(Integer.toString(pts));
+            }
         }
         if (v==btnDialogMinusDraws)
         {
-
+            if (d>0)
+            {
+                d--;
+                mp--;
+                pts--;
+                tvDialogDraws.setText(Integer.toString(d));
+                tvDialogMp.setText(Integer.toString(mp));
+                tvDialogPts.setText(Integer.toString(pts));
+            }
         }
         if (v==btnDialogMinusLosses)
         {
-
+            if (l>0)
+            {
+                l--;
+                mp--;
+                tvDialogLosees.setText(Integer.toString(l));
+                tvDialogMp.setText(Integer.toString(mp));
+            }
         }
+    }
+
+    public int findTeamLocationByname(String currentName, ArrayList<Team> teamsList)
+    {
+        boolean flag = true;
+        ArrayList<Team> copyTeamsList = teamsList;
+        for (int i = 0; i < copyTeamsList.size(); i++)
+        {
+            if (copyTeamsList.get(i).getTeamName().equals(currentName))
+                return i;
+        }
+        return 1;
+    }
+
+    public int findLeagueLocationByname(String currentName, ArrayList<League> LeagueList)
+    {
+        boolean flag = true;
+        ArrayList<League> copyLeagueList = LeagueList;
+        for (int i = 0; i < copyLeagueList.size(); i++)
+        {
+            if (copyLeagueList.get(i).getLeagueName().equals(currentName))
+                return i;
+        }
+        return 1;
     }
 }

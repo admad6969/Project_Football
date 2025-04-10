@@ -1,7 +1,10 @@
 package com.example.project_start;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -29,7 +32,9 @@ public class StartedTeams extends AppCompatActivity {
     String currentName;
     String leagueUid;
     ArrayList<League> leaguesList;
+    TextView tvHasStarted;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +51,8 @@ public class StartedTeams extends AppCompatActivity {
         rv.setLayoutManager(new LinearLayoutManager(this));
 
         firebaseDatabase = FirebaseDatabase.getInstance("https://newpcproject-c165b-default-rtdb.europe-west1.firebasedatabase.app/");
+
+        tvHasStarted = (TextView) findViewById(R.id.tvStartedLeague);
 
         Intent intent = getIntent();
         currentName = intent.getStringExtra("LeagueName");
@@ -65,6 +72,10 @@ public class StartedTeams extends AppCompatActivity {
                     leaguesList.add(league);
                 }
                 selectedLeague = findLeagueByname(currentName, leaguesList);
+                if (!(selectedLeague.getStarted()))
+                {
+                    tvHasStarted.setVisibility(View.VISIBLE);
+                }
                 ArrayList<Team> leaguesTeams = selectedLeague.getTeamsInLeague();
 
                 Collections.sort(leaguesTeams, new Comparator<Team>()
