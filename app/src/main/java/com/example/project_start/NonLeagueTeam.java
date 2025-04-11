@@ -52,6 +52,8 @@ public class NonLeagueTeam extends AppCompatActivity implements View.OnClickList
     AlertDialog dialog;
     AlertDialog.Builder builder;
     League selectedLeague;
+    Button btnCreateTeam, btnCreateLeague, btnMyTeams, btnMyLeague, btnExplorer, btnView, btnCreate;
+
 
 
     @SuppressLint("MissingInflatedId")
@@ -88,7 +90,21 @@ public class NonLeagueTeam extends AppCompatActivity implements View.OnClickList
         etSearch = (EditText) findViewById(R.id.etSearch);
         btnChangeLeague = (Button) findViewById(R.id.btnChangeLeague);
 
+        btnCreateLeague = (Button) findViewById(R.id.btnCreateLeagueTab);
+        btnCreateTeam = (Button) findViewById(R.id.btnCreateTeam);
+        btnMyTeams = (Button) findViewById(R.id.btnMyTeams);
+        btnMyLeague = (Button) findViewById(R.id.btnMyLeagues);
+        btnExplorer = (Button) findViewById(R.id.btnExplorer);
+        btnView = (Button) findViewById(R.id.btnView);
+        btnCreate = (Button) findViewById(R.id.btnCreateOpener);
 
+        btnCreateTeam.setOnClickListener(this);
+        btnCreateLeague.setOnClickListener(this);
+        btnMyLeague.setOnClickListener(this);
+        btnCreate.setOnClickListener(this);
+        btnView.setOnClickListener(this);
+        btnExplorer.setOnClickListener(this);
+        btnMyTeams.setOnClickListener(this);
 
         rv = (RecyclerView) findViewById(R.id.rv);
         rv.setHasFixedSize(true);
@@ -225,7 +241,7 @@ public void getRequests(League league)
     });
 }
 
-    public  void onClick2(League league)
+    public void onClick2(League league)
     {
         getRequests(league);
 
@@ -289,65 +305,99 @@ public void getRequests(League league)
     @Override
     public void onClick(View v)
     {
-        refrenceRequests = firebaseDatabase.getReference("Team requests").child(selectedLeague.getUid());
-        referenceTeams = firebaseDatabase.getReference("Teams").child(uid);
-        if (v==btnSearch)
+        if (v == btnCreateTeam)
         {
-            String search = etSearch.getText().toString();
-            if (search.isEmpty())
-                Toast.makeText(NonLeagueTeam.this, "please type valid league name", Toast.LENGTH_LONG).show();
-            else
-                getLeagueBySearch(search);
+            Intent intent = new Intent(NonLeagueTeam.this, Create_Team.class);
+            startActivity(intent);
         }
-        if (v==accept)
+        if (v == btnCreateLeague)
         {
-            teamsList.remove(findTeamLocationByname(team.getTeamName(),teamsList));
-            team.setInLeague(selectedLeague);
-            teamsList.add(team);
-            referenceTeams.setValue(teamsList);
-
-
-            //referenceTeams.child(Integer.toString(findTeamLocationByname(team.getTeamName(),teamsList))).child("inLeague").setValue(selectedLeague);
-
-            team.setInLeague(selectedLeague);
-            requests.add(team);
-            refrenceRequests.setValue(requests);
-
-            requests = new ArrayList<>();
-
-            Toast.makeText(NonLeagueTeam.this, "request sent", Toast.LENGTH_LONG).show();
-
-
-            dialog.dismiss();
-
-            linierframe.setVisibility(View.VISIBLE);
-            rv.setVisibility(View.GONE);
-            btnSearch.setVisibility(View.GONE);
-            etSearch.setVisibility(View.GONE);
-
-            tvLeagueName.setText(selectedLeague.getLeagueName());
-            tvCapacity.setText(Integer.toString(selectedLeague.getCapacity()));
-            leagueLogo.setImageBitmap(selectedLeague.picToBitmap());
+            Intent intent = new Intent(NonLeagueTeam.this, Create_League.class);
+            startActivity(intent);
         }
-        if (v==decline)
+
+        if (v == btnMyLeague)
         {
-            dialog.dismiss();
+            Intent intent = new Intent(NonLeagueTeam.this, My_Leagues.class);
+            startActivity(intent);
         }
-        if (v==btnChangeLeague)
+        if (v==btnExplorer)
         {
-            team.setInLeague(new League());
-            teamsList.remove(findTeamLocationByname(team.getTeamName(),teamsList));
-            teamsList.add(team);
-            referenceTeams.setValue(teamsList);
+            Intent intent = new Intent(NonLeagueTeam.this, Main_Page.class);
+            startActivity(intent);
+        }
+        if (v==btnMyTeams)
+        {
+            Intent intent = new Intent(NonLeagueTeam.this, My_Teams.class);
+            startActivity(intent);
+        }
+        if (v== btnCreate)
+        {
+            btnCreate.setVisibility(View.GONE);
+            btnCreateTeam.setVisibility(View.VISIBLE);
+            btnCreateLeague.setVisibility(View.VISIBLE);
+        }
+        if (v==btnView)
+        {
+            btnView.setVisibility(View.GONE);
+            btnMyLeague.setVisibility(View.VISIBLE);
+            btnMyTeams.setVisibility(View.VISIBLE);
+        }
+        if (selectedLeague!=null)
+        {
+            refrenceRequests = firebaseDatabase.getReference("Team requests").child(selectedLeague.getUid());
+            referenceTeams = firebaseDatabase.getReference("Teams").child(uid);
+            if (v == btnSearch) {
+                String search = etSearch.getText().toString();
+                if (search.isEmpty())
+                    Toast.makeText(NonLeagueTeam.this, "please type valid league name", Toast.LENGTH_LONG).show();
+                else
+                    getLeagueBySearch(search);
+            }
+            if (v == accept) {
+                teamsList.remove(findTeamLocationByname(team.getTeamName(), teamsList));
+                team.setInLeague(selectedLeague);
+                teamsList.add(team);
+                referenceTeams.setValue(teamsList);
 
-            requests.remove(findTeamLocationByname(currentName,requests));
-            refrenceRequests.setValue(requests);
+                team.setInLeague(selectedLeague);
+                requests.add(team);
+                refrenceRequests.setValue(requests);
 
-            linierframe.setVisibility(View.GONE);
-            rv.setVisibility(View.VISIBLE);
-            btnSearch.setVisibility(View.VISIBLE);
-            etSearch.setVisibility(View.VISIBLE);
+                requests = new ArrayList<>();
 
+                Toast.makeText(NonLeagueTeam.this, "request sent", Toast.LENGTH_LONG).show();
+
+
+                dialog.dismiss();
+
+                linierframe.setVisibility(View.VISIBLE);
+                rv.setVisibility(View.GONE);
+                btnSearch.setVisibility(View.GONE);
+                etSearch.setVisibility(View.GONE);
+
+                tvLeagueName.setText(selectedLeague.getLeagueName());
+                tvCapacity.setText(Integer.toString(selectedLeague.getCapacity()));
+                leagueLogo.setImageBitmap(selectedLeague.picToBitmap());
+            }
+            if (v == decline) {
+                dialog.dismiss();
+            }
+            if (v == btnChangeLeague) {
+                team.setInLeague(new League());
+                teamsList.remove(findTeamLocationByname(team.getTeamName(), teamsList));
+                teamsList.add(team);
+                referenceTeams.setValue(teamsList);
+
+                requests.remove(findTeamLocationByname(currentName, requests));
+                refrenceRequests.setValue(requests);
+
+                linierframe.setVisibility(View.GONE);
+                rv.setVisibility(View.VISIBLE);
+                btnSearch.setVisibility(View.VISIBLE);
+                etSearch.setVisibility(View.VISIBLE);
+
+            }
         }
     }
 

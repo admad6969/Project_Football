@@ -34,6 +34,8 @@ public class My_Leagues extends AppCompatActivity implements View.OnClickListene
     FirebaseAuth firebaseAuth;
     final String uid = FirebaseAuth.getInstance().getUid();
     private ValueEventListener leaguesListener;
+    Button btnCreateTeam, btnCreateLeague, btnMyTeams, btnMyLeague, btnExplorer, btnView, btnCreate;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +60,22 @@ public class My_Leagues extends AppCompatActivity implements View.OnClickListene
         etSearch = findViewById(R.id.etSearch);
 
         btnSearch.setOnClickListener(this);
+
+        btnCreateLeague = (Button) findViewById(R.id.btnCreateLeagueTab);
+        btnCreateTeam = (Button) findViewById(R.id.btnCreateTeam);
+        btnMyTeams = (Button) findViewById(R.id.btnMyTeams);
+        btnMyLeague = (Button) findViewById(R.id.btnMyLeagues);
+        btnExplorer = (Button) findViewById(R.id.btnExplorer);
+        btnView = (Button) findViewById(R.id.btnView);
+        btnCreate = (Button) findViewById(R.id.btnCreateOpener);
+
+        btnCreateTeam.setOnClickListener(this);
+        btnCreateLeague.setOnClickListener(this);
+        btnMyTeams.setOnClickListener(this);
+        btnCreate.setOnClickListener(this);
+        btnView.setOnClickListener(this);
+        btnExplorer.setOnClickListener(this);
+
 
         firebaseDatabase = FirebaseDatabase.getInstance("https://newpcproject-c165b-default-rtdb.europe-west1.firebasedatabase.app/");
         getLeagues();
@@ -131,7 +149,42 @@ public class My_Leagues extends AppCompatActivity implements View.OnClickListene
                 getLeagues();
             else
                 getLeagueBySearch(search);
+
         }
+        if (v == btnCreateTeam)
+        {
+            Intent intent = new Intent(My_Leagues.this, Create_Team.class);
+            startActivity(intent);
+        }
+        if (v == btnCreateLeague)
+        {
+            Intent intent = new Intent(My_Leagues.this, Create_League.class);
+            startActivity(intent);
+        }
+
+        if (v == btnMyTeams)
+        {
+            Intent intent = new Intent(My_Leagues.this, My_Teams.class);
+            startActivity(intent);
+        }
+        if (v==btnExplorer)
+        {
+            Intent intent = new Intent(My_Leagues.this, Main_Page.class);
+            startActivity(intent);
+        }
+        if (v== btnCreate)
+        {
+            btnCreate.setVisibility(View.GONE);
+            btnCreateTeam.setVisibility(View.VISIBLE);
+            btnCreateLeague.setVisibility(View.VISIBLE);
+        }
+        if (v==btnView)
+        {
+            btnView.setVisibility(View.GONE);
+            btnMyLeague.setVisibility(View.VISIBLE);
+            btnMyTeams.setVisibility(View.VISIBLE);
+        }
+
     }
 
     public void getLeagueBySearch(String search) {

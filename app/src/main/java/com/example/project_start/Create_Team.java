@@ -38,6 +38,7 @@ public class Create_Team extends AppCompatActivity implements View.OnClickListen
 
     EditText etTeamName, etMananger, etCaptain;
     Button btnCreate, btnLogo;
+    Button btnCreateTeam, btnCreateLeague, btnMyTeams, btnMyLeague, btnExplorer, btnView, btncreate;
     ImageView ivPic;
     Bitmap php;
     FirebaseAuth firebaseAuth;
@@ -65,9 +66,19 @@ public class Create_Team extends AppCompatActivity implements View.OnClickListen
         etTeamName = (EditText) findViewById(R.id.etTeamName);
         etMananger = (EditText) findViewById(R.id.etManager);
         etCaptain = (EditText) findViewById(R.id.etCaptain);
-        btnCreate = (Button) findViewById(R.id.btnCreateTeam);
+        btnCreate = (Button) findViewById(R.id.btnSubmit);
         btnLogo = (Button) findViewById(R.id.btnUploadLogo);
-        ivPic = findViewById(R.id.ivLogo);
+        ivPic = (ImageView) findViewById(R.id.ivLogo);
+
+        btnCreateTeam = (Button) findViewById(R.id.btnCreateTeam);
+        btnCreateLeague = (Button) findViewById(R.id.btnCreateLeague);
+        btnMyTeams = (Button) findViewById(R.id.btnMyTeams);
+        btnMyLeague = (Button) findViewById(R.id.btnMyLeagues);
+        btnExplorer = (Button) findViewById(R.id.btnExplorer);
+        btnView = (Button) findViewById(R.id.btnView);
+        btncreate = (Button) findViewById(R.id.btnCreateOpener);
+
+
         firebaseDatabase = FirebaseDatabase.getInstance("https://newpcproject-c165b-default-rtdb.europe-west1.firebasedatabase.app/");
         php = null;
         initiallizedActivityResults();
@@ -75,6 +86,15 @@ public class Create_Team extends AppCompatActivity implements View.OnClickListen
 
         btnLogo.setOnClickListener(this);
         btnCreate.setOnClickListener(this);
+
+        btnCreateLeague.setOnClickListener(this);
+        btnCreateTeam.setOnClickListener(this);
+        btnMyTeams.setOnClickListener(this);
+        btnMyLeague.setOnClickListener(this);
+        btncreate.setOnClickListener(this);
+        btnView.setOnClickListener(this);
+        btnExplorer.setOnClickListener(this);
+
 
         ref = firebaseDatabase.getReference("Teams").child(firebaseAuth.getUid());
         ref.addValueEventListener(new ValueEventListener() {
@@ -128,6 +148,38 @@ public class Create_Team extends AppCompatActivity implements View.OnClickListen
         {
         Intent intent = new Intent(MediaStore.ACTION_PICK_IMAGES);
         activityResultLauncherUpload.launch(intent);
+        }
+        if (v == btnCreateLeague)
+        {
+            Intent intent = new Intent(Create_Team.this, Create_League.class);
+            startActivity(intent);
+        }
+        if (v == btnMyTeams)
+        {
+            Intent intent = new Intent(Create_Team.this, My_Teams.class);
+            startActivity(intent);
+        }
+        if (v == btnMyLeague)
+        {
+            Intent intent = new Intent(Create_Team.this, My_Leagues.class);
+            startActivity(intent);
+        }
+        if (v==btnExplorer)
+        {
+            Intent intent = new Intent(Create_Team.this, Main_Page.class);
+            startActivity(intent);
+        }
+        if (v==btncreate)
+        {
+            btncreate.setVisibility(View.GONE);
+            btnCreateTeam.setVisibility(View.VISIBLE);
+            btnCreateLeague.setVisibility(View.VISIBLE);
+        }
+        if (v==btnView)
+        {
+            btnView.setVisibility(View.GONE);
+            btnMyLeague.setVisibility(View.VISIBLE);
+            btnMyTeams.setVisibility(View.VISIBLE);
         }
     }
     public void  initiallizedActivityResults()

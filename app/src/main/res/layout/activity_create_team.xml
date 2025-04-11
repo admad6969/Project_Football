@@ -16,10 +16,10 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         />
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         >
 
         <LinearLayout
@@ -78,7 +78,7 @@
 
 
             <Button
-                android:id="@+id/btnCreateTeam"
+                android:id="@+id/btnSubmit"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -87,4 +87,112 @@
                 android:textSize="20sp" />
         </LinearLayout>
     </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:weightSum="5"
+        android:background="#1A751D"
+        >
+
+        <Button
+            android:id="@+id/btnCreateOpener"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:text="create"
+            android:background="@android:color/transparent"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:padding="2dp"
+            android:drawableTop="@drawable/hammer"
+            android:visibility="visible"
+            />
+
+        <Button
+            android:id="@+id/btnCreateTeam"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Team"
+            android:background="@android:color/transparent"
+            android:textSize="10sp"
+            android:gravity="center"
+            android:padding="4dp"
+            android:visibility="gone"
+            android:drawableTop="@drawable/players"
+            />
+
+        <Button
+            android:id="@+id/btnCreateLeague"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="League"
+            android:background="@android:color/transparent"
+            android:textSize="13sp"
+            android:gravity="center"
+            android:padding="1dp"
+            android:drawableTop="@drawable/list"
+            android:visibility="gone"
+            />
+
+        <Button
+            android:id="@+id/btnExplorer"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Explorer"
+            android:background="@android:color/transparent"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:padding="1dp"
+            android:drawableTop="@drawable/magnif"
+            />
+
+        <Button
+            android:id="@+id/btnView"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:text="view"
+            android:background="@android:color/transparent"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:padding="1dp"
+            android:drawableTop="@drawable/view"
+            android:visibility="visible"
+            />
+
+        <Button
+            android:id="@+id/btnMyLeagues"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="My Leagues"
+            android:background="@android:color/transparent"
+            android:textSize="10sp"
+            android:gravity="center"
+            android:padding="1dp"
+            android:drawableTop="@drawable/trophy"
+            android:visibility="gone"
+            />
+
+        <Button
+            android:id="@+id/btnMyTeams"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="My Teams"
+            android:background="@android:color/transparent"
+            android:textColor="@android:color/white"
+            android:textSize="10sp"
+            android:gravity="center"
+            android:padding="1dp"
+            android:drawableTop="@drawable/shield"
+            android:visibility="gone"
+            />
+
+    </LinearLayout>
 </LinearLayout>

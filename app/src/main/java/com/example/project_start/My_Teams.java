@@ -34,6 +34,7 @@ public class My_Teams extends AppCompatActivity implements View.OnClickListener 
     EditText etSearch;
     FirebaseAuth firebaseAuth;
     final String uid = FirebaseAuth.getInstance().getUid();
+    Button btnCreateTeam, btnCreateLeague, btnMyTeams, btnMyLeague, btnExplorer, btnView, btnCreate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +60,22 @@ public class My_Teams extends AppCompatActivity implements View.OnClickListener 
         getTeams();
 
         btnSearch.setOnClickListener(this);
+
+        btnCreateLeague = (Button) findViewById(R.id.btnCreateLeagueTab);
+        btnCreateTeam = (Button) findViewById(R.id.btnCreateTeam);
+        btnMyTeams = (Button) findViewById(R.id.btnMyTeams);
+        btnMyLeague = (Button) findViewById(R.id.btnMyLeagues);
+        btnExplorer = (Button) findViewById(R.id.btnExplorer);
+        btnView = (Button) findViewById(R.id.btnView);
+        btnCreate = (Button) findViewById(R.id.btnCreateOpener);
+
+        btnCreateTeam.setOnClickListener(this);
+        btnCreateLeague.setOnClickListener(this);
+        btnMyLeague.setOnClickListener(this);
+        btnCreate.setOnClickListener(this);
+        btnView.setOnClickListener(this);
+        btnExplorer.setOnClickListener(this);
+
     }
 
     public void onItemClick2(Team team)
@@ -84,6 +101,39 @@ public class My_Teams extends AppCompatActivity implements View.OnClickListener 
     @Override
     public void onClick(View v)
     {
+        if (v == btnCreateTeam)
+        {
+            Intent intent = new Intent(My_Teams.this, Create_Team.class);
+            startActivity(intent);
+        }
+        if (v == btnCreateLeague)
+        {
+            Intent intent = new Intent(My_Teams.this, Create_League.class);
+            startActivity(intent);
+        }
+
+        if (v == btnMyLeague)
+        {
+            Intent intent = new Intent(My_Teams.this, My_Leagues.class);
+            startActivity(intent);
+        }
+        if (v==btnExplorer)
+        {
+            Intent intent = new Intent(My_Teams.this, Main_Page.class);
+            startActivity(intent);
+        }
+        if (v== btnCreate)
+        {
+            btnCreate.setVisibility(View.GONE);
+            btnCreateTeam.setVisibility(View.VISIBLE);
+            btnCreateLeague.setVisibility(View.VISIBLE);
+        }
+        if (v==btnView)
+        {
+            btnView.setVisibility(View.GONE);
+            btnMyLeague.setVisibility(View.VISIBLE);
+            btnMyTeams.setVisibility(View.VISIBLE);
+        }
         if (v == btnSearch)
         {
             String search = etSearch.getText().toString();

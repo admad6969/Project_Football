@@ -52,6 +52,8 @@ public class StartedLeague extends AppCompatActivity implements View.OnClickList
     Team selectedTeam;
     ArrayList<Team> leaguesTeams;
     String uid = FirebaseAuth.getInstance().getUid();
+    Button btnCreateTeam, btnCreateLeague, btnMyTeams, btnMyLeague, btnExplorer, btnView, btnCreate;
+
 
 
 
@@ -79,6 +81,23 @@ public class StartedLeague extends AppCompatActivity implements View.OnClickList
         builder = new AlertDialog.Builder(StartedLeague.this);
         builder.setView(dialogView);
         dialog = builder.create();
+
+        btnCreateLeague = (Button) findViewById(R.id.btnCreateLeagueTab);
+        btnCreateTeam = (Button) findViewById(R.id.btnCreateTeam);
+        btnMyTeams = (Button) findViewById(R.id.btnMyTeams);
+        btnMyLeague = (Button) findViewById(R.id.btnMyLeagues);
+        btnExplorer = (Button) findViewById(R.id.btnExplorer);
+        btnView = (Button) findViewById(R.id.btnView);
+        btnCreate = (Button) findViewById(R.id.btnCreateOpener);
+
+        btnCreateTeam.setOnClickListener(this);
+        btnCreateLeague.setOnClickListener(this);
+        btnMyLeague.setOnClickListener(this);
+        btnCreate.setOnClickListener(this);
+        btnView.setOnClickListener(this);
+        btnExplorer.setOnClickListener(this);
+        btnMyTeams.setOnClickListener(this);
+
 
         getLeagues();
     }
@@ -192,6 +211,44 @@ public class StartedLeague extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v)
     {
+        if (v == btnCreateTeam)
+        {
+            Intent intent = new Intent(StartedLeague.this, Create_Team.class);
+            startActivity(intent);
+        }
+        if (v == btnCreateLeague)
+        {
+            Intent intent = new Intent(StartedLeague.this, Create_League.class);
+            startActivity(intent);
+        }
+
+        if (v == btnMyLeague)
+        {
+            Intent intent = new Intent(StartedLeague.this, My_Leagues.class);
+            startActivity(intent);
+        }
+        if (v==btnExplorer)
+        {
+            Intent intent = new Intent(StartedLeague.this, Main_Page.class);
+            startActivity(intent);
+        }
+        if (v==btnMyTeams)
+        {
+            Intent intent = new Intent(StartedLeague.this, My_Teams.class);
+            startActivity(intent);
+        }
+        if (v== btnCreate)
+        {
+            btnCreate.setVisibility(View.GONE);
+            btnCreateTeam.setVisibility(View.VISIBLE);
+            btnCreateLeague.setVisibility(View.VISIBLE);
+        }
+        if (v==btnView)
+        {
+            btnView.setVisibility(View.GONE);
+            btnMyLeague.setVisibility(View.VISIBLE);
+            btnMyTeams.setVisibility(View.VISIBLE);
+        }
         if (v==btnDialogConfrim)
         {
             DatabaseReference refrenceLeagues = firebaseDatabase.getReference("Leagues").child(uid);

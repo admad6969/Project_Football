@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -24,7 +25,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class StartedTeams extends AppCompatActivity {
+public class StartedTeams extends AppCompatActivity implements View.OnClickListener {
 
     RecyclerView rv;
     League selectedLeague;
@@ -33,6 +34,8 @@ public class StartedTeams extends AppCompatActivity {
     String leagueUid;
     ArrayList<League> leaguesList;
     TextView tvHasStarted;
+    Button btnCreateTeam, btnCreateLeague, btnMyTeams, btnMyLeague, btnExplorer, btnView, btnCreate;
+
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -57,6 +60,23 @@ public class StartedTeams extends AppCompatActivity {
         Intent intent = getIntent();
         currentName = intent.getStringExtra("LeagueName");
         leagueUid = intent.getStringExtra("LeagueUid");
+
+        btnCreateLeague = (Button) findViewById(R.id.btnCreateLeagueTab);
+        btnCreateTeam = (Button) findViewById(R.id.btnCreateTeam);
+        btnMyTeams = (Button) findViewById(R.id.btnMyTeams);
+        btnMyLeague = (Button) findViewById(R.id.btnMyLeagues);
+        btnExplorer = (Button) findViewById(R.id.btnExplorer);
+        btnView = (Button) findViewById(R.id.btnView);
+        btnCreate = (Button) findViewById(R.id.btnCreateOpener);
+
+        btnCreateTeam.setOnClickListener(this);
+        btnCreateLeague.setOnClickListener(this);
+        btnMyLeague.setOnClickListener(this);
+        btnMyTeams.setOnClickListener(this);
+        btnCreate.setOnClickListener(this);
+        btnView.setOnClickListener(this);
+        btnExplorer.setOnClickListener(this);
+
 
         getLeagues();
     }
@@ -112,5 +132,48 @@ public class StartedTeams extends AppCompatActivity {
                 return copyLeagueList.get(i);
         }
         return new League();
+    }
+
+    @Override
+    public void onClick(View v)
+    {
+        if (v == btnCreateTeam)
+        {
+            Intent intent = new Intent(StartedTeams.this, Create_Team.class);
+            startActivity(intent);
+        }
+        if (v == btnCreateLeague)
+        {
+            Intent intent = new Intent(StartedTeams.this, Create_League.class);
+            startActivity(intent);
+        }
+
+        if (v == btnMyLeague)
+        {
+            Intent intent = new Intent(StartedTeams.this, My_Leagues.class);
+            startActivity(intent);
+        }
+        if (v==btnExplorer)
+        {
+            Intent intent = new Intent(StartedTeams.this, Main_Page.class);
+            startActivity(intent);
+        }
+        if (v==btnMyTeams)
+        {
+            Intent intent = new Intent(StartedTeams.this, My_Teams.class);
+            startActivity(intent);
+        }
+        if (v== btnCreate)
+        {
+            btnCreate.setVisibility(View.GONE);
+            btnCreateTeam.setVisibility(View.VISIBLE);
+            btnCreateLeague.setVisibility(View.VISIBLE);
+        }
+        if (v==btnView)
+        {
+            btnView.setVisibility(View.GONE);
+            btnMyLeague.setVisibility(View.VISIBLE);
+            btnMyTeams.setVisibility(View.VISIBLE);
+        }
     }
 }

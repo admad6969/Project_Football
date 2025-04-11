@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -34,12 +33,12 @@ import com.google.firebase.database.ValueEventListener;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Create_League extends AppCompatActivity implements View.OnClickListener {
 
     EditText etLeagueName, etDescription, etLeagueCapacity, etAdvancers, etRelegation;
-    Button btnCreate, btnLogo;
+    Button btnSubmitLeague, btnLogo;
+    Button btnCreateTeam, btnCreateLeague, btnMyTeams, btnMyLeague, btnExplorer, btnView, btnCreate;
     ImageView ivPic;
     Bitmap php;
     FirebaseAuth firebaseAuth;
@@ -68,16 +67,41 @@ public class Create_League extends AppCompatActivity implements View.OnClickList
         etAdvancers = (EditText) findViewById(R.id.etAdvancers);
         etDescription = (EditText) findViewById(R.id.etLeagueDescription);
         etRelegation = (EditText) findViewById(R.id.etRelegation);
-        btnCreate = (Button) findViewById(R.id.btnCreateTeam);
+        btnSubmitLeague = (Button) findViewById(R.id.btnCreateLeague);
         btnLogo = (Button) findViewById(R.id.btnUploadLogo);
         ivPic = findViewById(R.id.ivLogo);
+
+        btnCreateLeague = (Button) findViewById(R.id.btnCreateLeagueTab);
+        btnCreateTeam = (Button) findViewById(R.id.btnCreateTeam);
+        btnMyTeams = (Button) findViewById(R.id.btnMyTeams);
+        btnMyLeague = (Button) findViewById(R.id.btnMyLeagues);
+        btnExplorer = (Button) findViewById(R.id.btnExplorer);
+        btnView = (Button) findViewById(R.id.btnView);
+        btnCreate = (Button) findViewById(R.id.btnCreateOpener);
+
+
+        btnCreate.setVisibility(View.VISIBLE);
+        btnCreateTeam.setVisibility(View.GONE);
+        btnCreateLeague.setVisibility(View.GONE);
+        btnView.setVisibility(View.VISIBLE);
+        btnMyLeague.setVisibility(View.GONE);
+        btnMyTeams.setVisibility(View.GONE);
+
         firebaseDatabase = FirebaseDatabase.getInstance("https://newpcproject-c165b-default-rtdb.europe-west1.firebasedatabase.app/");
         php = null;
         initiallizedActivityResults();
         firebaseAuth = FirebaseAuth.getInstance();
 
         btnLogo.setOnClickListener(this);
+        btnSubmitLeague.setOnClickListener(this);
+
+
+        btnCreateTeam.setOnClickListener(this);
+        btnMyTeams.setOnClickListener(this);
+        btnMyLeague.setOnClickListener(this);
         btnCreate.setOnClickListener(this);
+        btnView.setOnClickListener(this);
+        btnExplorer.setOnClickListener(this);
 
         ref = firebaseDatabase.getReference("Leagues").child(firebaseAuth.getUid());
         ref.addValueEventListener(new ValueEventListener() {
@@ -103,7 +127,39 @@ public class Create_League extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v)
     {
-        if (v == btnCreate)
+        if (v == btnCreateTeam)
+        {
+            Intent intent = new Intent(Create_League.this, Create_Team.class);
+            startActivity(intent);
+        }
+        if (v == btnMyTeams)
+        {
+            Intent intent = new Intent(Create_League.this, My_Teams.class);
+            startActivity(intent);
+        }
+        if (v == btnMyLeague)
+        {
+            Intent intent = new Intent(Create_League.this, My_Leagues.class);
+            startActivity(intent);
+        }
+        if (v==btnExplorer)
+        {
+            Intent intent = new Intent(Create_League.this, Main_Page.class);
+            startActivity(intent);
+        }
+        if (v== btnCreate)
+        {
+            btnCreate.setVisibility(View.GONE);
+            btnCreateTeam.setVisibility(View.VISIBLE);
+            btnCreateLeague.setVisibility(View.VISIBLE);
+        }
+        if (v==btnView)
+        {
+            btnView.setVisibility(View.GONE);
+            btnMyLeague.setVisibility(View.VISIBLE);
+            btnMyTeams.setVisibility(View.VISIBLE);
+        }
+        if (v == btnSubmitLeague)
         {
             if (!(etLeagueName.getText().toString().isEmpty()) && !(etDescription.getText().toString().isEmpty()) && (Integer.parseInt( etLeagueCapacity.getText().toString())>0) && (Integer.parseInt( etAdvancers.getText().toString())>0) && (Integer.parseInt( etRelegation.getText().toString())>0 && ((Integer.parseInt(etRelegation.getText().toString()))+(Integer.parseInt(etAdvancers.getText().toString()))) < (Integer.parseInt(etLeagueCapacity.getText().toString()))))
             {
