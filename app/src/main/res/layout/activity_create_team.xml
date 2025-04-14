@@ -8,85 +8,99 @@
     tools:context=".Sign_up"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:text="team creater"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        />
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:gravity="center_horizontal"
+        android:background="#FFFFFF"
         android:layout_weight="1"
         >
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Team Creator"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            android:textColor="#1A751D"
+            android:layout_marginTop="24dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            >
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal">
 
-
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="team name"
-            android:textSize="30sp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:id="@+id/etTeamName"
-            />
+            <EditText
+                android:id="@+id/etTeamName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Team Name"
+                android:textSize="20sp"
+                android:padding="12dp"
+                android:layout_marginTop="10dp"
+                android:background="@android:drawable/edit_text"
+                android:gravity="center" />
 
             <Button
+                android:id="@+id/btnUploadLogo"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:text="Team logo"
-                android:textSize="20sp"
+                android:text="Team Logo"
+                android:textSize="18sp"
                 android:layout_marginTop="20dp"
-                android:layout_gravity="center"
-                android:id="@+id/btnUploadLogo"
+                android:backgroundTint="#1A751D"
+                android:textColor="#FFFFFF"
                 />
+
             <ImageView
+                android:id="@+id/ivLogo"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:layout_gravity="center"
-                android:id="@+id/ivLogo"
+                android:layout_marginTop="12dp"
+                android:background="#EEEEEE"
+                android:scaleType="centerCrop"
+                android:contentDescription="Team Logo" />
+
+            <EditText
+                android:id="@+id/etManager"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Manager name"
+                android:textSize="20sp"
+                android:padding="12dp"
+                android:layout_marginTop="16dp"
+                android:background="@android:drawable/edit_text"
+                android:gravity="center"
                 />
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="Manager"
-            android:textSize="30sp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:id="@+id/etManager"
-            />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="Captain"
-            android:textSize="30sp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:id="@+id/etCaptain"
-            />
-
+            <EditText
+                android:id="@+id/etCaptain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Captain name"
+                android:textSize="20sp"
+                android:padding="12dp"
+                android:layout_marginTop="16dp"
+                android:background="@android:drawable/edit_text"
+                android:gravity="center" />
 
             <Button
                 android:id="@+id/btnSubmit"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:text="create"
-                android:textSize="20sp" />
+                android:text="Create"
+                android:textSize="18sp"
+                android:layout_marginTop="24dp"
+                android:backgroundTint="#1A751D"
+                android:textColor="#FFFFFF"
+                />
         </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -116,7 +130,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="Team"
-            android:background="@android:color/transparent"
+            android:backgroundTint="#139017"
             android:textSize="10sp"
             android:gravity="center"
             android:padding="4dp"

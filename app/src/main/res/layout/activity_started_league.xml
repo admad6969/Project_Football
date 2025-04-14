@@ -30,7 +30,7 @@
             android:textSize="30sp"
             android:text="name"
             android:paddingTop="50dp"
-            android:paddingLeft="120dp"
+            android:paddingLeft="90dp"
             android:id="@+id/tvTeamName"
             />
 
@@ -41,7 +41,7 @@
             android:text="mp"
             android:paddingTop="50dp"
             android:id="@+id/tvPlayed"
-            android:paddingLeft="12dp"
+            android:paddingLeft="42dp"
             />
 
         <TextView
@@ -58,33 +58,33 @@
             android:textColor="#008000"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="30sp"
+            android:textSize="25sp"
             android:text="W"
             android:paddingTop="50dp"
             android:id="@+id/tvWins"
-            android:paddingLeft="22dp"
+            android:layout_marginLeft="9dp"
             />
 
         <TextView
             android:textColor="#FFc107"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="30sp"
+            android:textSize="25sp"
             android:text="D"
             android:paddingTop="50dp"
             android:id="@+id/tvDraws"
-            android:paddingLeft="7dp"
+            android:layout_marginLeft="14dp"
             />
 
         <TextView
             android:id="@+id/tvLosses"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="7dp"
+            android:layout_marginLeft="19dp"
             android:paddingTop="50dp"
             android:text="L"
             android:textColor="#C41E3A"
-            android:textSize="30sp" />
+            android:textSize="25sp" />
 
     </LinearLayout>
 
@@ -92,7 +92,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/rvLeagueTable"
-        android:layout_margin="10dp"
         android:layout_weight="1"
         />
 

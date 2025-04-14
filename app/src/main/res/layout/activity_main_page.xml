@@ -9,51 +9,51 @@
     >
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_weight="1"
         android:id="@+id/llLeagues"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
         android:visibility="visible"
-        android:padding="15dp"
-        >
+        android:padding="16dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="explorer"
+            android:text="Explorer"
             android:layout_gravity="center"
-            android:paddingTop="10dp"
-            android:textSize="47sp"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            android:textColor="#1A751D"
+            android:paddingBottom="8dp"
             />
 
         <EditText
-            android:layout_width="wrap_content"
+            android:id="@+id/etSearch"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Search a league"
-            android:textSize="20sp"
-            android:id="@+id/etSearch"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
+            android:textSize="16sp"
+            android:padding="12dp"
+            android:background="@android:drawable/editbox_background"
             />
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Search"
-            android:textSize="20sp"
             android:id="@+id/btnSearch"
-            android:layout_marginLeft="10dp"
-            />
-
-        <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/rvLeagues"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            />
+            android:text="Search"
+            android:textSize="16sp"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="#1A751D"
+            android:textColor="#FFFFFF" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvLeagues"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -63,98 +63,112 @@
         android:layout_weight="1"
         android:id="@+id/llTeams"
         android:visibility="gone"
-        android:padding="15dp"
         >
 
         <ImageButton
+            android:id="@+id/btnDismiss"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@drawable/dismiss"
-            android:id="@+id/btnDismiss"
-            />
+            android:contentDescription="Dismiss"
+            android:layout_margin="10dp" />
+
         <TextView
+            android:id="@+id/tvLeagueName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="league name"
+            android:text="League Name"
             android:layout_gravity="center"
-            android:paddingTop="10dp"
-            android:textSize="47sp"
-            android:id="@+id/tvLeagueName"
-            />
+            android:textSize="36sp"
+            android:textStyle="bold"
+            android:paddingTop="8dp"
+            android:paddingBottom="16dp"
+            android:textColor="#1A751D" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="20dp"
-            >
-
+            android:orientation="horizontal"
+            android:paddingBottom="5dp"
+            android:background="#F9F9F9"
+            android:elevation="2dp">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="30sp"
-                android:text="name"
-                android:paddingLeft="110dp"
                 android:id="@+id/tvTeamName"
-                />
-
-            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="30sp"
-                android:text="mp"
+                android:text="Name"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:paddingTop="20dp"
+                android:paddingLeft="95dp"
+                android:textColor="@color/black" />
+
+            <TextView
                 android:id="@+id/tvPlayed"
-                android:paddingLeft="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MP"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:paddingTop="20dp"
+                android:paddingLeft="60dp"
+                android:textColor="@color/black"
                 />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="30sp"
-                android:text="pts"
                 android:id="@+id/tvPoints"
-                android:paddingLeft="6dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pts"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:paddingTop="20dp"
+                android:paddingLeft="12dp"
+                android:textColor="@color/black"
                 />
 
             <TextView
-                android:textColor="#008000"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="30sp"
-                android:text="W"
                 android:id="@+id/tvWins"
-                android:paddingLeft="13dp"
-                />
-
-            <TextView
-                android:textColor="#FFc107"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="30sp"
-                android:text="D"
+                android:text="W"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:paddingTop="20dp"
+                android:layout_marginLeft="28dp"
+                android:textColor="#008000" />
+
+            <TextView
                 android:id="@+id/tvDraws"
-                android:paddingLeft="7dp"
-                />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="D"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:paddingTop="20dp"
+                android:layout_marginLeft="19dp"
+                android:textColor="#FFC107" />
 
             <TextView
                 android:id="@+id/tvLosses"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="7dp"
                 android:text="L"
-                android:textColor="#C41E3A"
-                android:textSize="30sp" />
-
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:paddingTop="20dp"
+                android:layout_marginLeft="19dp"
+                android:textColor="#C41E3A" />
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvTeams"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/rvTeams"
-            android:layout_margin="10dp"
+            android:layout_marginTop="12dp"
+            android:paddingBottom="8dp"
             />
-
-
     </LinearLayout>
 
 
@@ -215,7 +229,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="Explorer"
-            android:background="@android:color/transparent"
+            android:backgroundTint="#139017"
             android:textSize="15sp"
             android:gravity="center"
             android:padding="1dp"

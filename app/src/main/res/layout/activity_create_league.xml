@@ -8,105 +8,126 @@
     tools:context=".Sign_up"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:text="League creater"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:padding="24dp"
+            android:layout_gravity="center"
             android:layout_weight="1"
             >
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="League creater"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                android:textColor="#1A751D"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="16dp"
+                android:layout_gravity="center" />
 
             <EditText
+                android:id="@+id/etLeagueName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="League name"
-                android:textSize="30sp"
-                android:layout_gravity="center"
+                android:textSize="18sp"
+                android:padding="12dp"
                 android:layout_marginTop="10dp"
-                android:id="@+id/etLeagueName"
+                android:background="@android:drawable/edit_text"
+                android:gravity="center"
+                android:layout_gravity="center"
                 />
 
             <EditText
+                android:id="@+id/etLeagueDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="League description"
-                android:textSize="30sp"
-                android:layout_gravity="center"
+                android:textSize="18sp"
+                android:padding="12dp"
                 android:layout_marginTop="10dp"
-                android:id="@+id/etLeagueDescription"
+                android:background="@android:drawable/edit_text"
+                android:gravity="center"
+                android:layout_gravity="center"
                 />
 
-
             <EditText
+                android:id="@+id/etLeagueCap"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="League capacity"
-                android:textSize="30sp"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
+                android:hint="capacity"
+                android:textSize="18sp"
                 android:inputType="number"
-                android:id="@+id/etLeagueCap"
+                android:padding="12dp"
+                android:layout_marginTop="10dp"
+                android:background="@android:drawable/edit_text"
+                android:gravity="center"
+                android:layout_gravity="center"
                 />
 
             <EditText
+                android:id="@+id/etAdvancers"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="Teams advancing"
-                android:textSize="30sp"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
+                android:textSize="18sp"
                 android:inputType="number"
-                android:id="@+id/etAdvancers"
+                android:padding="12dp"
+                android:layout_marginTop="10dp"
+                android:background="@android:drawable/edit_text"
+                android:gravity="center"
+                android:layout_gravity="center"
                 />
 
-
-
             <EditText
+                android:id="@+id/etRelegation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="Teams relegated"
-                android:textSize="30sp"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
+                android:textSize="18sp"
                 android:inputType="number"
-                android:id="@+id/etRelegation"
+                android:padding="12dp"
+                android:layout_marginTop="10dp"
+                android:background="@android:drawable/edit_text"
+                android:gravity="center"
+                android:layout_gravity="center"
                 />
 
-
             <Button
+                android:id="@+id/btnUploadLogo"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:text="League logo"
-                android:textSize="20sp"
-                android:layout_marginTop="10dp"
-                android:layout_gravity="center"
-                android:id="@+id/btnUploadLogo"
-                />
+                android:textSize="18sp"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="#1A751D"
+                android:textColor="#FFFFFF"
+                android:layout_gravity="center" />
 
             <ImageView
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_gravity="center"
                 android:id="@+id/ivLogo"
-                />
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="16dp"
+                android:layout_gravity="center"
+                android:background="#EEEEEE"
+                android:scaleType="centerCrop"
+                android:contentDescription="League Logo" />
 
             <Button
                 android:id="@+id/btnCreateLeague"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:text="upload"
-                android:textSize="20sp" />
+                android:text="Upload"
+                android:textSize="18sp"
+                android:backgroundTint="#1A751D"
+                android:textColor="#FFFFFF"
+                android:layout_marginTop="24dp"
+                android:layout_gravity="center" />
+
         </LinearLayout>
 
     <LinearLayout
@@ -139,6 +160,7 @@
             android:text="Team"
             android:background="@android:color/transparent"
             android:textSize="10sp"
+            android:backgroundTint="#814B4B"
             android:gravity="center"
             android:padding="4dp"
             android:visibility="gone"
@@ -150,7 +172,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="League"
-            android:background="@android:color/transparent"
+            android:backgroundTint="#139017"
             android:textSize="13sp"
             android:gravity="center"
             android:padding="1dp"

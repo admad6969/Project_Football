@@ -33,7 +33,7 @@ public class StartedTeams extends AppCompatActivity implements View.OnClickListe
     String currentName;
     String leagueUid;
     ArrayList<League> leaguesList;
-    TextView tvHasStarted;
+    TextView tvHasStarted, tvTitle;
     Button btnCreateTeam, btnCreateLeague, btnMyTeams, btnMyLeague, btnExplorer, btnView, btnCreate;
 
 
@@ -52,6 +52,8 @@ public class StartedTeams extends AppCompatActivity implements View.OnClickListe
         rv = (RecyclerView) findViewById(R.id.rvLeagueTable);
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(this));
+
+        tvTitle = (TextView) findViewById(R.id.tvTitle);
 
         firebaseDatabase = FirebaseDatabase.getInstance("https://newpcproject-c165b-default-rtdb.europe-west1.firebasedatabase.app/");
 
@@ -92,6 +94,7 @@ public class StartedTeams extends AppCompatActivity implements View.OnClickListe
                     leaguesList.add(league);
                 }
                 selectedLeague = findLeagueByname(currentName, leaguesList);
+                tvTitle.setText(selectedLeague.getLeagueName()+ " table");
                 if (!(selectedLeague.getStarted()))
                 {
                     tvHasStarted.setVisibility(View.VISIBLE);

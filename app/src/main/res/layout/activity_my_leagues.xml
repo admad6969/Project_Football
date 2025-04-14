@@ -127,12 +127,12 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="My Leagues"
-            android:background="@android:color/transparent"
             android:textSize="10sp"
             android:gravity="center"
             android:padding="1dp"
             android:drawableTop="@drawable/trophy"
             android:visibility="gone"
+            android:backgroundTint="#139017"
             />
 
         <Button

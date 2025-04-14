@@ -152,7 +152,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="My Teams"
-            android:background="@android:color/transparent"
+            android:backgroundTint="#139017"
             android:textColor="@android:color/white"
             android:textSize="10sp"
             android:gravity="center"

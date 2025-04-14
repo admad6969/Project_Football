@@ -109,6 +109,7 @@
                 android:textSize="26sp"
                 android:text="0"
                 android:id="@+id/tvMp"
+                android:layout_gravity="center"
                 />
 
             <ImageButton
@@ -141,6 +142,7 @@
                 android:textSize="26sp"
                 android:text="000"
                 android:id="@+id/tvPts"
+                android:layout_gravity="center"
                 />
 
             <ImageButton
@@ -171,6 +173,7 @@
                 android:textSize="26sp"
                 android:text="00"
                 android:id="@+id/tvWins"
+                android:layout_gravity="center"
                 />
 
             <ImageButton
@@ -200,6 +203,8 @@
                 android:textSize="26sp"
                 android:text="pp"
                 android:id="@+id/tvDraws"
+                android:layout_gravity="center"
+
                 />
 
             <ImageButton
@@ -228,7 +233,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="26sp"
-                android:text="pp"
+                android:text="p"
+                android:layout_gravity="center"
                 android:id="@+id/tvLosses"
                 />
 

@@ -5,74 +5,86 @@
     android:orientation="horizontal">
 
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/ivLogo"
-        />
-
-    <TextView
-        android:layout_width="105dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="27sp"
-        android:text="maccabi"
-        android:paddingTop="20dp"
-        android:id="@+id/tvTeamName"
-        />
+        android:id="@+id/llBackground"
+        >
 
-    <TextView
-        android:layout_width="41dp"
-        android:layout_height="wrap_content"
-        android:textSize="23sp"
-        android:text="00"
-        android:paddingTop="20dp"
-        android:id="@+id/tvPlayed"
-        android:paddingLeft="10dp"
-        />
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/ivLogo"
+            />
 
-    <TextView
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:textSize="23sp"
-        android:text="000"
-        android:paddingTop="20dp"
-        android:id="@+id/tvPoints"
-        android:paddingLeft="10dp"
-        />
+        <TextView
+            android:layout_width="105dp"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:text="maccabi"
+            android:textColor="@color/black"
+            android:paddingTop="20dp"
+            android:id="@+id/tvTeamName"
+            />
 
-    <TextView
-        android:textColor="#008000"
-        android:layout_width="46dp"
-        android:layout_height="wrap_content"
-        android:textSize="23sp"
-        android:text="12"
-        android:paddingTop="20dp"
-        android:id="@+id/tvWins"
-        android:paddingLeft="15dp"
-        />
+        <TextView
+            android:layout_width="41dp"
+            android:layout_height="wrap_content"
+            android:textSize="23sp"
+            android:text="00"
+            android:paddingTop="20dp"
+            android:id="@+id/tvPlayed"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            />
 
-    <TextView
-        android:textColor="#FFc107"
-        android:layout_width="32dp"
-        android:layout_height="wrap_content"
-        android:textSize="23sp"
-        android:text="00"
-        android:paddingTop="20dp"
-        android:id="@+id/tvDraws"
-        android:paddingLeft="5dp"
-        />
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:textSize="23sp"
+            android:text="000"
+            android:paddingTop="20dp"
+            android:id="@+id/tvPoints"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            />
 
-    <TextView
-        android:id="@+id/tvLosses"
-        android:layout_width="41dp"
-        android:layout_height="wrap_content"
-        android:paddingLeft="5dp"
-        android:paddingTop="20dp"
-        android:text="00"
-        android:textColor="#C41E3A"
-        android:textSize="23sp" />
+        <TextView
+            android:textColor="#008000"
+            android:layout_width="32dp"
+            android:layout_height="wrap_content"
+            android:textSize="23sp"
+            android:text="12"
+            android:paddingTop="20dp"
+            android:id="@+id/tvWins"
+            android:textAlignment="center"
+            android:layout_marginLeft="5dp"
+            />
 
+        <TextView
+            android:textColor="#FFc107"
+            android:layout_width="32dp"
+            android:layout_height="wrap_content"
+            android:textSize="23sp"
+            android:text="00"
+            android:paddingTop="20dp"
+            android:id="@+id/tvDraws"
+            android:layout_marginLeft="3dp"
+            android:textAlignment="center"
+            />
 
+        <TextView
+            android:id="@+id/tvLosses"
+            android:layout_width="32dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:text="00"
+            android:textColor="#C41E3A"
+            android:textSize="23sp"
+            android:layout_marginLeft="3dp"
+            android:textAlignment="center"
+            />
 
+    </LinearLayout>
 
 </LinearLayout>
