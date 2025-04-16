@@ -44,7 +44,7 @@ public class NonLeagueTeam extends AppCompatActivity implements View.OnClickList
     Team team;
     EditText etSearch;
     Button accept,decline,btnSearch, btnChangeLeague;
-    TextView tvRequestTitle, tvLeagueName, tvCapacity;
+    TextView tvRequestTitle, tvLeagueName;
     String uid = FirebaseAuth.getInstance().getUid();
     DatabaseReference refrenceRequests,referenceTeams;
     ArrayList<Team> requests;
@@ -83,7 +83,6 @@ public class NonLeagueTeam extends AppCompatActivity implements View.OnClickList
         captain = (TextView) findViewById(R.id.tvCaptain);
         manager = (TextView) findViewById(R.id.tvManager);
         logo = (ImageView) findViewById(R.id.ivLogo);
-        tvCapacity = (TextView) findViewById(R.id.tvCapacity);
         tvLeagueName = (TextView) findViewById(R.id.tvLeagueName);
         leagueLogo = (ImageView) findViewById(R.id.ivLeagueLogo);
         btnSearch = (Button) findViewById(R.id.btnSearch);
@@ -142,7 +141,6 @@ public class NonLeagueTeam extends AppCompatActivity implements View.OnClickList
                     selectedLeague = team.getInLeague();
 
                     tvLeagueName.setText(team.getInLeague().getLeagueName());
-                    tvCapacity.setText(Integer.toString(team.getInLeague().getCapacity()));
                     leagueLogo.setImageBitmap(team.getInLeague().picToBitmap());
                 }
             }
@@ -288,8 +286,8 @@ public void getRequests(League league)
                 Intent intent = getIntent();
                 String currentName = intent.getStringExtra("currentName");
                 team = findTeamByName(currentName, teamsList);
-                manager.setText(team.getManager());
-                captain.setText(team.getCaptain());
+                manager.setText("manager: " + team.getManager());
+                captain.setText("captain: " + team.getCaptain());
                 name.setText(team.getTeamName());
                 logo.setImageBitmap(team.picToBitmap());
             }
@@ -377,7 +375,6 @@ public void getRequests(League league)
                 etSearch.setVisibility(View.GONE);
 
                 tvLeagueName.setText(selectedLeague.getLeagueName());
-                tvCapacity.setText(Integer.toString(selectedLeague.getCapacity()));
                 leagueLogo.setImageBitmap(selectedLeague.picToBitmap());
             }
             if (v == decline) {

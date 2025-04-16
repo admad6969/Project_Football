@@ -12,80 +12,92 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="your League"
-        android:textSize="50sp"
-        android:textColor="#000000"
+        android:text="title"
         android:layout_gravity="center"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        android:textColor="#1A751D"
+        android:paddingBottom="8dp"
+        android:layout_marginTop="16dp"
+        android:id="@+id/tvTitle"
         />
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:background="#F9F9F9"
         >
 
-
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="30sp"
-            android:text="name"
-            android:paddingTop="50dp"
-            android:paddingLeft="90dp"
             android:id="@+id/tvTeamName"
-            />
-
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="30sp"
-            android:text="mp"
-            android:paddingTop="50dp"
+            android:text="Name"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:paddingTop="20dp"
+            android:paddingLeft="95dp"
+            android:textColor="@color/black" />
+
+        <TextView
             android:id="@+id/tvPlayed"
-            android:paddingLeft="42dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MP"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:paddingTop="20dp"
+            android:paddingLeft="60dp"
+            android:textColor="@color/black"
             />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="30sp"
-            android:text="pts"
-            android:paddingTop="50dp"
             android:id="@+id/tvPoints"
-            android:paddingLeft="6dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pts"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:paddingTop="20dp"
+            android:paddingLeft="12dp"
+            android:textColor="@color/black"
             />
 
         <TextView
-            android:textColor="#008000"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="25sp"
-            android:text="W"
-            android:paddingTop="50dp"
             android:id="@+id/tvWins"
-            android:layout_marginLeft="9dp"
-            />
-
-        <TextView
-            android:textColor="#FFc107"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="25sp"
-            android:text="D"
-            android:paddingTop="50dp"
+            android:text="W"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:paddingTop="20dp"
+            android:layout_marginLeft="28dp"
+            android:textColor="#008000" />
+
+        <TextView
             android:id="@+id/tvDraws"
-            android:layout_marginLeft="14dp"
-            />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="D"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:paddingTop="20dp"
+            android:layout_marginLeft="19dp"
+            android:textColor="#FFC107" />
 
         <TextView
             android:id="@+id/tvLosses"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="19dp"
-            android:paddingTop="50dp"
             android:text="L"
-            android:textColor="#C41E3A"
-            android:textSize="25sp" />
-
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:paddingTop="20dp"
+            android:layout_marginLeft="19dp"
+            android:textColor="#C41E3A" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

@@ -42,25 +42,28 @@ public class TeamsInLeague_Adapter extends RecyclerView.Adapter<TeamsInLeague_Ad
     public void onBindViewHolder(@NonNull PostViewHolder holder, int position)
     {
         Team team = teamList.get(position);
-        if (position==0)
+        if (team.getInLeague().getStarted())
         {
-            holder.llBack.setBackgroundColor(Color.rgb(255,220,115));
-        }
-        else if (team.getInLeague().getAdvancers()>=2 && position == 1)
-        {
-            holder.llBack.setBackgroundColor(Color.rgb(216,216,216));
-        }
-        else if (team.getInLeague().getAdvancers()>=3 && position == 2)
-        {
-            holder.llBack.setBackgroundColor(Color.rgb(206,137,70));
-        }
-        else if (position<=team.getInLeague().getAdvancers() && position>2)
-        {
-            holder.llBack.setBackgroundColor(Color.rgb(176,216,230));
-        }
-        else if (team.getInLeague().getCapacity()-position<=team.getInLeague().getRelegation())
-        {
-            holder.llBack.setBackgroundColor(Color.rgb(255,155,158));
+            if (position == 0)
+            {
+                holder.llBack.setBackgroundColor(Color.rgb(255, 220, 115));
+            }
+            else if (team.getInLeague().getAdvancers() >= 2 && position == 1)
+            {
+                holder.llBack.setBackgroundColor(Color.rgb(216, 216, 216));
+            }
+            else if (team.getInLeague().getAdvancers() >= 3 && position == 2)
+            {
+                holder.llBack.setBackgroundColor(Color.rgb(206, 137, 70));
+            }
+            else if (position <= team.getInLeague().getAdvancers() && position > 2)
+            {
+                holder.llBack.setBackgroundColor(Color.rgb(176, 216, 230));
+            }
+            else if (team.getInLeague().getCapacity() - position <= team.getInLeague().getRelegation())
+            {
+                holder.llBack.setBackgroundColor(Color.rgb(255, 155, 158));
+            }
         }
         holder.tvTeamName.setText(team.getTeamName());
         holder.tvPoints.setText(Integer.toString(team.getPoints()));

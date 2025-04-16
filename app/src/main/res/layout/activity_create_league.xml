@@ -100,32 +100,41 @@
                 android:id="@+id/btnUploadLogo"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:text="League logo"
+                android:text="add logo"
                 android:textSize="18sp"
                 android:layout_marginTop="16dp"
                 android:backgroundTint="#1A751D"
                 android:textColor="#FFFFFF"
                 android:layout_gravity="center" />
 
-            <ImageView
-                android:id="@+id/ivLogo"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_marginTop="16dp"
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_gravity="center"
-                android:background="#EEEEEE"
-                android:scaleType="centerCrop"
-                android:contentDescription="League Logo" />
+                app:cardCornerRadius="1000dp"
+                android:layout_marginBottom="5dp"
+                >
+
+                <ImageView
+                    android:id="@+id/ivLogo"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_gravity="center"
+                    android:background="#EEEEEE"
+                    />
+
+
+            </androidx.cardview.widget.CardView>
 
             <Button
                 android:id="@+id/btnCreateLeague"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:text="Upload"
+                android:text="create league"
                 android:textSize="18sp"
                 android:backgroundTint="#1A751D"
-                android:textColor="#FFFFFF"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="16dp"
                 android:layout_gravity="center" />
 
         </LinearLayout>

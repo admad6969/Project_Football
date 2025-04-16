@@ -11,148 +11,158 @@
     >
 
   <TextView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:hint="team name"
-      android:textSize="40dp"
       android:id="@+id/tvTeamName"
-      android:layout_marginLeft="10dp"
-      android:layout_marginTop="5dp"
-      android:layout_gravity="center"
-      />
-  <TextView
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:hint="team Manager"
-      android:textSize="30sp"
-      android:id="@+id/tvManager"
-      android:layout_marginLeft="10dp"
-      android:layout_marginTop="5dp"
+      android:text="Team name"
+      android:textSize="36dp"
+      android:textStyle="bold"
+      android:textColor="#1A751D"
       android:layout_gravity="center"
+      android:layout_marginTop="16dp"
+
       />
 
   <TextView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:hint="team captain"
-      android:textSize="30sp"
       android:id="@+id/tvCaptain"
-      android:layout_marginLeft="10dp"
-      android:layout_marginTop="5dp"
-      android:layout_gravity="center"
-      />
-  <ImageView
-      android:layout_width="120dp"
-      android:layout_height="120dp"
-      android:id="@+id/ivLogo"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Team Captain"
+      android:textSize="24sp"
+      android:layout_marginTop="8dp"
       android:layout_gravity="center"
       />
 
+  <TextView
+      android:id="@+id/tvManager"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Team manager"
+      android:textSize="24sp"
+      android:layout_marginTop="8dp"
+      android:layout_gravity="center"
+      />
+
+  <androidx.cardview.widget.CardView
+      android:layout_width="100dp"
+      android:layout_height="100dp"
+      android:layout_gravity="center"
+      app:cardCornerRadius="1000dp"
+      android:layout_marginBottom="16dp"
+      android:layout_marginTop="16dp"
+      >
+
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/addimage"
+        android:layout_gravity="center"
+        android:scaleType="fitXY"
+        />
+
+  </androidx.cardview.widget.CardView>
 
   <EditText
+      android:id="@+id/etSearch"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:hint="Search a team"
-      android:textSize="20sp"
-      android:id="@+id/etSearch"
-      android:layout_marginLeft="10dp"
-      android:layout_marginTop="5dp"
+      android:hint="Search for a league"
+      android:textSize="16sp"
+      android:layout_marginTop="16dp"
+      android:padding="12dp"
+      android:background="@android:drawable/edit_text"
+      android:gravity="center"
+      android:layout_gravity="center"
       />
 
   <Button
+      android:id="@+id/btnSearch"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:text="Search"
-      android:textSize="20sp"
-      android:id="@+id/btnSearch"
-      android:layout_marginLeft="10dp"
+      android:textSize="16sp"
+      android:layout_marginTop="8dp"
+      android:backgroundTint="#1A751D"
+      android:layout_gravity="center"
       />
-
 
   <FrameLayout
       android:layout_width="match_parent"
-      android:layout_height="match_parent"
+      android:layout_height="0dp"
       android:layout_weight="1"
-      >
-
+      android:layout_marginTop="16dp">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10dp"
+        android:visibility="visible"
+        android:background="#F5F5F5"
+        />
+
+    <LinearLayout
+        android:id="@+id/linier2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/rv"
-        android:layout_margin="10dp"
-        android:visibility="visible"
-        />
-    <LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    tools:context=".NonLeagueTeam"
-    android:orientation="vertical"
-    android:layout_gravity="center|top"
-    android:id="@+id/linier2"
-    android:visibility="gone"
-    >
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="gone">
 
       <TextView
+          android:id="@+id/tvpending"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:text="invite pending"
-          android:textSize="40dp"
-          android:textColor="@color/black"
-          android:id="@+id/tvpending"
-          android:layout_marginLeft="10dp"
-          android:layout_marginTop="5dp"
-          android:layout_gravity="center"
+          android:text="Invite Pending to:"
+          android:textSize="32sp"
+          android:textStyle="bold"
+          android:textColor="#1A751D"
+          android:layout_marginTop="20dp"
+          android:layout_marginBottom="12dp"
+          android:textAlignment="center" />
+
+      <TextView
+          android:id="@+id/tvLeagueName"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="League Name"
+          android:textSize="24sp"
           android:textAlignment="center"
-          />
+          android:layout_marginBottom="4dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="team name"
-        android:textSize="40dp"
-        android:id="@+id/tvLeagueName"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
-        android:gravity="center"
-        android:textAlignment="center"
-        />
+      <androidx.cardview.widget.CardView
+          android:layout_width="100dp"
+          android:layout_height="100dp"
+          android:layout_gravity="center"
+          app:cardCornerRadius="1000dp"
+          android:layout_marginBottom="16dp"
+          android:layout_marginTop="16dp"
+          >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="league cap"
-        android:textSize="40sp"
-        android:id="@+id/tvCapacity"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_gravity="center"
-        android:textAlignment="center"
-        />
+        <ImageView
+            android:id="@+id/ivLeagueLogo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginBottom="16dp"
+            android:scaleType="centerCrop"
+            android:background="#EEEEEE"
+            android:contentDescription="League logo" />
 
-    <ImageView
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:id="@+id/ivLeagueLogo"
-        android:layout_gravity="center"
-        />
+      </androidx.cardview.widget.CardView>
 
       <Button
+          android:id="@+id/btnChangeLeague"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:text="change league request"
-          android:textSize="20sp"
-          android:id="@+id/btnChangeLeague"
-          android:layout_marginLeft="10dp"
-          android:layout_gravity="center"
-          android:paddingTop="10dp"
-          />
-
-
+          android:text="Change League Request"
+          android:textSize="16sp"
+          android:layout_marginBottom="16dp"
+          android:backgroundTint="#1A751D"
+          android:textColor="#FFFFFF" />
     </LinearLayout>
 
   </FrameLayout>
-
 
   <LinearLayout
       android:layout_width="match_parent"

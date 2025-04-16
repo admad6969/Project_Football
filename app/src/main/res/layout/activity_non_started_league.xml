@@ -11,54 +11,100 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="league name"
-        android:textSize="50sp"
-        android:textColor="#000000"
+        android:text="League Name"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        android:textColor="#1A751D"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="24dp"
         android:layout_gravity="center"
+        android:id="@+id/tvLeagueName"
         />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="league name"
-        android:textSize="50sp"
-        android:textColor="#000000"
-        android:layout_gravity="center"
-        android:layout_weight="1"
-        />
-
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="450dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="horizontal"
+        android:gravity="center"
         >
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:id="@+id/rvRequests"
-            android:layout_marginLeft="10dp"
-            />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_gravity="top"
+            android:background="#F5F5F5"
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:id="@+id/rvTeamsInLeaue"
-            android:layout_margin="0dp"
-            />
+            >
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Joining Requests"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginBottom="8dp"
+                android:layout_gravity="center"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvRequests"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="#FFFFFF"
+                android:padding="4dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_gravity="top"
+            android:background="#F5F5F5"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Teams in League"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginBottom="8dp"
+                android:layout_gravity="center"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvTeamsInLeaue"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="#FFFFFF"
+                android:padding="4dp" />
+        </LinearLayout>
     </LinearLayout>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Start league"
-        android:layout_marginTop="30dp"
         android:id="@+id/btnStart"
-        android:layout_marginBottom="10dp"
-        />
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Start League"
+        android:textSize="18sp"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#1A751D"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="40dp"
+        android:layout_gravity="center" />
+
 
     <LinearLayout
         android:layout_width="match_parent"

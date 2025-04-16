@@ -33,7 +33,9 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginTop="20dp"
-            android:gravity="center_horizontal">
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            >
 
             <EditText
                 android:id="@+id/etTeamName"
@@ -45,26 +47,6 @@
                 android:layout_marginTop="10dp"
                 android:background="@android:drawable/edit_text"
                 android:gravity="center" />
-
-            <Button
-                android:id="@+id/btnUploadLogo"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:text="Team Logo"
-                android:textSize="18sp"
-                android:layout_marginTop="20dp"
-                android:backgroundTint="#1A751D"
-                android:textColor="#FFFFFF"
-                />
-
-            <ImageView
-                android:id="@+id/ivLogo"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_marginTop="12dp"
-                android:background="#EEEEEE"
-                android:scaleType="centerCrop"
-                android:contentDescription="Team Logo" />
 
             <EditText
                 android:id="@+id/etManager"
@@ -89,17 +71,46 @@
                 android:background="@android:drawable/edit_text"
                 android:gravity="center" />
 
+
+            <Button
+                android:id="@+id/btnUploadLogo"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="add Logo"
+                android:textSize="18sp"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="#1A751D"
+                />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                app:cardCornerRadius="1000dp"
+                android:layout_marginTop="24dp"
+                >
+
+
+                <ImageView
+                    android:id="@+id/ivLogo"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:background="#EEEEEE"
+                    />
+
+            </androidx.cardview.widget.CardView>
+
             <Button
                 android:id="@+id/btnSubmit"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:text="Create"
+                android:text="Create team"
                 android:textSize="18sp"
                 android:layout_marginTop="24dp"
                 android:backgroundTint="#1A751D"
-                android:textColor="#FFFFFF"
                 />
         </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout

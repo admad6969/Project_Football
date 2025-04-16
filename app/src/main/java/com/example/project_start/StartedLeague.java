@@ -53,9 +53,7 @@ public class StartedLeague extends AppCompatActivity implements View.OnClickList
     ArrayList<Team> leaguesTeams;
     String uid = FirebaseAuth.getInstance().getUid();
     Button btnCreateTeam, btnCreateLeague, btnMyTeams, btnMyLeague, btnExplorer, btnView, btnCreate;
-
-
-
+    TextView tvtTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +68,8 @@ public class StartedLeague extends AppCompatActivity implements View.OnClickList
         rv = (RecyclerView) findViewById(R.id.rvLeagueTable);
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(this));
+
+        tvtTitle = (TextView) findViewById(R.id.tvTitle);
 
         firebaseDatabase = FirebaseDatabase.getInstance("https://newpcproject-c165b-default-rtdb.europe-west1.firebasedatabase.app/");
         intent = getIntent();
@@ -112,8 +112,8 @@ public class StartedLeague extends AppCompatActivity implements View.OnClickList
                     leaguesList.add(league);
                 }
                 selectedLeague = findLeagueByname(currentName, leaguesList);
+                tvtTitle.setText(selectedLeague.getLeagueName() + " table");
                 leaguesTeams = selectedLeague.getTeamsInLeague();
-
                 Collections.sort(leaguesTeams, new Comparator<Team>()
                 {
                     @Override

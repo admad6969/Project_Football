@@ -6,46 +6,84 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_margin="32dp"
+    android:gravity="center_horizontal"
+    >
+
+        <TextView
+            android:id="@+id/tvAppName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="App Name"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            android:textColor="#1A751D"
+            android:layout_marginBottom="40dp"
+            android:layout_gravity="center"
+            />
+
+        <EditText
+            android:id="@+id/etUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="email"
+            android:textSize="16sp"
+            android:padding="14dp"
+            android:layout_marginBottom="16dp"
+            android:background="@android:drawable/edit_text"
+            android:inputType="text"
+            android:gravity="start|center_vertical" />
+
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:textSize="16sp"
+            android:padding="14dp"
+            android:layout_marginBottom="24dp"
+            android:background="@android:drawable/edit_text"
+            android:gravity="start|center_vertical"
+            />
+
+        <Button
+            android:id="@+id/ButtonLogIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Log In"
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#1A751D"
+            android:layout_marginBottom="16dp"
+             />
 
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Username"
-        android:textSize="30sp"
-        android:layout_gravity="center"
-        android:layout_marginTop="200dp"
-        android:id="@+id/etUsername"
-        />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Password"
-        android:textSize="30sp"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:id="@+id/etPassword"
-        />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="dont have an account?"
+                android:textSize="18sp"
+                />
 
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:text="Log In"
-        android:textSize="20sp"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center"
-        android:id="@+id/ButtonLogIn"
-        />
 
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:text="Sign up"
-        android:textSize="20sp"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center"
-        android:id="@+id/ButtonSignUp"
-        />
-</LinearLayout>
+            <Button
+                android:id="@+id/ButtonSignUp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sign Up"
+                android:textSize="18sp"
+                android:textColor="#1A751D"
+                android:background="@android:color/transparent"
+                android:textStyle="bold"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>

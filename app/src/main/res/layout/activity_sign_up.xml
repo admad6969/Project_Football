@@ -6,90 +6,101 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Sign_up"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="32dp"
+    >
 
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="40sp"
-        android:layout_marginTop="10dp"
-        android:text="Sign up"
         android:id="@+id/tvSignup"
-        android:layout_gravity="center"/>
-
-    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="enter email"
-        android:textSize="30sp"
+        android:text="Sign up"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        android:textColor="#1A751D"
+        android:layout_marginBottom="32dp"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
+        />
+
+    <EditText
         android:id="@+id/etEnterUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:textSize="16sp"
+        android:padding="14dp"
+        android:layout_marginBottom="16dp"
+        android:background="@android:drawable/edit_text"
         />
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Enter password"
-        android:textSize="30sp"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
         android:id="@+id/etEnterPassword"
-        />
-    <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter first name"
-        android:textSize="30sp"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
+        android:hint="Password"
+        android:textSize="16sp"
+        android:padding="14dp"
+        android:layout_marginBottom="16dp"
+        android:background="@android:drawable/edit_text"
+        />
+
+    <EditText
         android:id="@+id/etEnterFirstName"
-        />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="First name"
+        android:textSize="16sp"
+        android:padding="14dp"
+        android:layout_marginBottom="16dp"
+        android:background="@android:drawable/edit_text" />
+
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Enter last name"
-        android:textSize="30sp"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
         android:id="@+id/etEnterLastName"
-        />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Last name"
+        android:textSize="16sp"
+        android:padding="14dp"
+        android:layout_marginBottom="24dp"
+        android:background="@android:drawable/edit_text" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        app:cardCornerRadius="1000dp"
+        android:layout_marginBottom="20dp"
+        >
+
+        <ImageButton
+            android:id="@+id/ibLogo"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/addimage"
+            android:layout_gravity="center"
+            android:scaleType="fitXY"
+            />
+
+    </androidx.cardview.widget.CardView>
 
     <Button
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:text="profile picture"
-        android:textSize="20sp"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center"
-        android:id="@+id/btnPicture"
-        />
-    <ImageView
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_gravity="center"
-        android:id="@+id/ivPicture"
-        />
-
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:text="date of birth"
-        android:textSize="20sp"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center"
         android:id="@+id/btnDate"
-        />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Date of birth"
+        android:textSize="16sp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="#1A751D"
+         />
 
     <Button
-        android:layout_width="200dp"
+        android:id="@+id/btnSubmitSU"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Submit"
-        android:textSize="20sp"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center"
-        android:id="@+id/btnSubmitSU"
+        android:textSize="18sp"
+        android:backgroundTint="#1A751D"
         />
 
 </LinearLayout>

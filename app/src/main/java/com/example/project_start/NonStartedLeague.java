@@ -41,13 +41,13 @@ public class NonStartedLeague extends AppCompatActivity implements View.OnClickL
     View dialogView;
     AlertDialog dialog;
     AlertDialog.Builder builder;
-    TextView tvTitle,tvCaptain,tvManager;
+    TextView tvTitle,tvCaptain,tvManager, tvLeagueName;
     Button btnDecline, btnAccept, btnStartLeague, btnRemoveTeam;
     ImageView ivTeamLogo;
     Team selectedTeam;
     Boolean flag = true;
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance("https://newpcproject-c165b-default-rtdb.europe-west1.firebasedatabase.app/");
-    DatabaseReference refrenceRequests = firebaseDatabase.getReference("Team requests").child(uid);;
+    DatabaseReference refrenceRequests = firebaseDatabase.getReference("Team requests").child(uid);
     DatabaseReference  refrenceLeagues = firebaseDatabase.getReference("Leagues").child(uid);
     Button btnCreateTeam, btnCreateLeague, btnMyTeams, btnMyLeague, btnExplorer, btnView, btnCreate;
 
@@ -73,6 +73,7 @@ public class NonStartedLeague extends AppCompatActivity implements View.OnClickL
         rvTeamsInLeague.setLayoutManager(new LinearLayoutManager(this));
 
         btnStartLeague = (Button) findViewById(R.id.btnStart);
+        tvLeagueName = (TextView) findViewById(R.id.tvLeagueName);
 
         LayoutInflater inflater = getLayoutInflater();
         dialogView = inflater.inflate(R.layout.get_request, null);
@@ -123,6 +124,7 @@ public class NonStartedLeague extends AppCompatActivity implements View.OnClickL
                     }
                 }
                 selectedLeague = findLeagueByName(currentName,leaguesList);
+                tvLeagueName.setText(selectedLeague.getLeagueName());
                 ArrayList<Team> tempTeamList = selectedLeague.getTeamsInLeague();
                 if(tempTeamList.get(0).getTeamName() != null)
                 {
@@ -324,8 +326,8 @@ public class NonStartedLeague extends AppCompatActivity implements View.OnClickL
         btnRemoveTeam.setVisibility(View.VISIBLE);
 
         tvTitle.setText(team.getTeamName());
-        tvManager.setText(team.getManager());
-        tvCaptain.setText(team.getManager());
+        tvManager.setText("manager: " + team.getManager());
+        tvCaptain.setText("captain: " + team.getCaptain());
         ivTeamLogo.setImageBitmap(team.picToBitmap());
 
         dialog.show();

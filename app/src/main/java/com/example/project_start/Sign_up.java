@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -34,13 +35,13 @@ import java.util.Date;
 
 public class Sign_up extends AppCompatActivity implements View.OnClickListener {
 
-    Button btnSumbit, btndateOfBirth, btnPic;
+    Button btnSumbit, btndateOfBirth;
+    ImageButton ibLogo;
     EditText etEnterUserName, etEnterPass, etFirstName, etLastName;
     FirebaseAuth firebaseAuth;
     FirebaseDatabase firebaseDatabase;
     Bitmap bitmap;
     Date date;
-    ImageView ivPic;
 
 
     @Override
@@ -56,19 +57,18 @@ public class Sign_up extends AppCompatActivity implements View.OnClickListener {
 
 
         btndateOfBirth = (Button) findViewById(R.id.btnDate);
-        btnPic = (Button) findViewById(R.id.btnPicture);
+        ibLogo = (ImageButton) findViewById(R.id.ibLogo);
         btnSumbit = (Button) findViewById(R.id.btnSubmitSU);
         etEnterPass = (EditText) findViewById(R.id.etEnterPassword);
         etEnterUserName = (EditText) findViewById(R.id.etEnterUsername);
         etFirstName = (EditText) findViewById(R.id.etEnterFirstName);
         etLastName = (EditText) findViewById(R.id.etEnterLastName);
-        ivPic = (ImageView) findViewById(R.id.ivPicture);
         firebaseDatabase = FirebaseDatabase.getInstance("https://newpcproject-c165b-default-rtdb.europe-west1.firebasedatabase.app/");
 
 
         btnSumbit.setOnClickListener(this);
-        btnPic.setOnClickListener(this);
         btndateOfBirth.setOnClickListener(this);
+        ibLogo.setOnClickListener(this);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -103,7 +103,9 @@ public class Sign_up extends AppCompatActivity implements View.OnClickListener {
                             Intent intent = new Intent(Sign_up.this, Main_Page.class);
                             startActivity(intent);
 
-                        } else {
+                        }
+                        else
+                        {
                             Toast.makeText(Sign_up.this, "Registration successful", Toast.LENGTH_LONG).show();
 
                         }
@@ -113,14 +115,17 @@ public class Sign_up extends AppCompatActivity implements View.OnClickListener {
                 Toast.makeText(Sign_up.this, "Not entered email or pass", Toast.LENGTH_LONG).show();
             }
         }
-        else if(v==btndateOfBirth){
+        else if(v==btndateOfBirth)
+        {
             Calendar systemCalender = Calendar.getInstance();
             int year = systemCalender.get(Calendar.YEAR);
             int month = systemCalender.get(Calendar.MONTH);
             int day = systemCalender.get(Calendar.DAY_OF_MONTH);
             DatePickerDialog datePickerDialog = new DatePickerDialog(Sign_up.this, new SetDate(), year, month, day);
             datePickerDialog.show();
-        } else if (v==btnPic) {
+        }
+        else if (v==ibLogo)
+        {
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             startActivityForResult(intent , 0);
         }
@@ -142,7 +147,7 @@ public class Sign_up extends AppCompatActivity implements View.OnClickListener {
         if(requestCode==0){
             if(resultCode==RESULT_OK){
                 bitmap = (Bitmap) data.getExtras().get("data");
-                ivPic.setImageBitmap(bitmap);
+                ibLogo.setImageBitmap(bitmap);
             }
         }
     }

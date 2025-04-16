@@ -197,7 +197,8 @@ public class Create_Team extends AppCompatActivity implements View.OnClickListen
                                 InputStream is = getContentResolver().openInputStream(selected);
                                 php = BitmapFactory.decodeStream(is);
                                 ivPic.setImageBitmap(php);
-                            } catch (FileNotFoundException e)
+                            }
+                            catch (FileNotFoundException e)
                             {
                                 throw new RuntimeException(e);
                             }

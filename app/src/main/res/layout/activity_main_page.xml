@@ -15,7 +15,7 @@
         android:layout_weight="1"
         android:orientation="vertical"
         android:visibility="visible"
-        android:padding="16dp">
+        >
 
         <TextView
             android:layout_width="wrap_content"
@@ -26,27 +26,32 @@
             android:textStyle="bold"
             android:textColor="#1A751D"
             android:paddingBottom="8dp"
+            android:layout_marginTop="16dp"
             />
 
         <EditText
             android:id="@+id/etSearch"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="Search a league"
             android:textSize="16sp"
             android:padding="12dp"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:background="@android:drawable/editbox_background"
             />
 
         <Button
             android:id="@+id/btnSearch"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Search"
             android:textSize="16sp"
             android:layout_marginTop="10dp"
             android:backgroundTint="#1A751D"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:layout_gravity="center"
+            />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvLeagues"
@@ -91,7 +96,7 @@
             android:orientation="horizontal"
             android:paddingBottom="5dp"
             android:background="#F9F9F9"
-            android:elevation="2dp">
+            >
 
             <TextView
                 android:id="@+id/tvTeamName"
@@ -170,8 +175,6 @@
             android:paddingBottom="8dp"
             />
     </LinearLayout>
-
-
 
     <LinearLayout
         android:layout_width="match_parent"

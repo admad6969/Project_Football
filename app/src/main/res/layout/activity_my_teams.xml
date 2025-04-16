@@ -11,48 +11,55 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
         android:orientation="vertical"
+        android:gravity="center"
+        android:layout_weight="1"
         >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="your teams"
-            android:textSize="50sp"
-            android:textColor="#000000"
+            android:text="Your Teams"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            android:textColor="#1A751D"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             android:layout_gravity="center"
             />
 
         <EditText
+            android:id="@+id/etSearch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="Search a team"
-            android:textSize="20sp"
-            android:id="@+id/etSearch"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
+            android:textSize="18sp"
+            android:padding="12dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:drawable/edit_text"
+            android:gravity="center"
             android:visibility="visible"
             />
 
         <Button
-            android:layout_width="wrap_content"
+            android:id="@+id/btnSearch"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:text="Search"
-            android:textSize="20sp"
-            android:id="@+id/btnSearch"
-            android:layout_marginLeft="10dp"
-            android:visibility="visible"
-            />
+            android:textSize="18sp"
+            android:backgroundTint="#1A751D"
+            android:layout_marginTop="12dp"
+            android:layout_gravity="center"
+            android:visibility="visible" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/rv"
-            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             />
-
-
     </LinearLayout>
 
     <LinearLayout
