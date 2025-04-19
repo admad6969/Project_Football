@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".Sign_up"
     android:orientation="vertical"
-    android:padding="32dp"
+    android:layout_margin="32dp"
     >
 
 

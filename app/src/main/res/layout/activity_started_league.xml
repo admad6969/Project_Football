@@ -96,7 +96,7 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:paddingTop="20dp"
-            android:layout_marginLeft="19dp"
+            android:layout_marginLeft="23dp"
             android:textColor="#C41E3A" />
     </LinearLayout>
 

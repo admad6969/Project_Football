@@ -1,75 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="10dp"
+        android:text="team editor"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="#1A751D"
+        android:layout_marginTop="6dp"
+        android:layout_gravity="center"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:layout_marginTop="10dp"
         >
 
         <TextView
+            android:id="@+id/tvTeamName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Name"
             android:textSize="20sp"
-            android:text="Team name"
+            android:textStyle="bold"
             android:paddingLeft="95dp"
-            />
+            android:textColor="@color/black" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="mp"
             android:id="@+id/tvPlayed"
-            android:paddingLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="12dp"
+            android:textColor="@color/black"
             />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="pts"
             android:id="@+id/tvPoints"
-            android:paddingLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pts"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="11dp"
+            android:textColor="@color/black"
             />
 
         <TextView
-            android:textColor="#008000"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
             android:text="W"
-            android:paddingLeft="25dp"
-            />
-
-        <TextView
-            android:textColor="#FFc107"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:text="D"
-            android:paddingLeft="16dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="16dp"
+            android:textColor="#008000"
             />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="18dp"
-            android:text="L"
-            android:textColor="#C41E3A"
-            android:textSize="20sp" />
+            android:text="D"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="25dp"
+            android:textColor="#FFC107" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="L"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="27dp"
+            android:textColor="#C41E3A" />
     </LinearLayout>
 
-
-
-
-
     <LinearLayout
-        android:layout_width="400dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
@@ -84,16 +100,16 @@
             android:layout_width="65dp"
             android:layout_height="wrap_content"
             android:textSize="17sp"
-            android:paddingTop="50dp"
-            android:text="maccabi"
+            android:text="team na"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
             android:id="@+id/tvDialogTeamName"
             />
 
         <LinearLayout
-            android:layout_width="50dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingLeft="10dp"
             >
 
             <ImageButton
@@ -101,6 +117,7 @@
                 android:layout_height="35dp"
                 android:background="@drawable/plus2"
                 android:id="@+id/IbPlusMp"
+                android:layout_gravity="center"
                 />
 
             <TextView
@@ -113,19 +130,20 @@
                 />
 
             <ImageButton
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:background="@drawable/minus"
                 android:id="@+id/IbMinusMp"
+                android:layout_gravity="center"
                 />
         </LinearLayout>
 
 
         <LinearLayout
-            android:layout_width="49dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingLeft="5dp"
+            android:layout_marginLeft="5dp"
             >
 
             <ImageButton
@@ -133,7 +151,7 @@
                 android:layout_height="35dp"
                 android:background="@drawable/plus2"
                 android:id="@+id/IbPlusPts"
-
+                android:layout_gravity="center"
                 />
 
             <TextView
@@ -146,18 +164,19 @@
                 />
 
             <ImageButton
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:background="@drawable/minus"
                 android:id="@+id/IbMinusPts"
+                android:layout_gravity="center"
                 />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="35dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingLeft="5dp"
+            android:layout_marginLeft="5dp"
             >
 
             <ImageButton
@@ -165,6 +184,7 @@
                 android:layout_height="35dp"
                 android:background="@drawable/plus2"
                 android:id="@+id/IbPlusW"
+                android:layout_gravity="center"
                 />
 
             <TextView
@@ -177,17 +197,19 @@
                 />
 
             <ImageButton
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:background="@drawable/minus"
                 android:id="@+id/IbMinusW"
+                android:layout_gravity="center"
                 />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="35dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:layout_marginLeft="5dp"
             >
 
             <ImageButton
@@ -195,6 +217,8 @@
                 android:layout_height="35dp"
                 android:background="@drawable/plus2"
                 android:id="@+id/IbPlusD"
+                android:layout_gravity="center"
+
                 />
 
             <TextView
@@ -204,19 +228,20 @@
                 android:text="pp"
                 android:id="@+id/tvDraws"
                 android:layout_gravity="center"
-
                 />
 
             <ImageButton
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:background="@drawable/minus"
                 android:id="@+id/IbMinusD"
+                android:layout_gravity="center"
                 />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="35dp"
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingRight="5dp"
@@ -227,6 +252,7 @@
                 android:layout_height="35dp"
                 android:background="@drawable/plus2"
                 android:id="@+id/IbPlusL"
+                android:layout_gravity="center"
                 />
 
             <TextView
@@ -239,19 +265,24 @@
                 />
 
             <ImageButton
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:background="@drawable/minus"
                 android:id="@+id/IbMinusL"
+                android:layout_gravity="center"
                 />
         </LinearLayout>
+
     </LinearLayout>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="confrim"
         android:id="@+id/btnDialogConfirm"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:text="confirm"
+        android:textSize="18sp"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="#1A751D"
+        android:layout_gravity="center"
         />
 </LinearLayout>

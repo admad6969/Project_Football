@@ -2,95 +2,100 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:padding="16dp"
     android:gravity="center">
+
+    <ImageButton
+        android:id="@+id/ibDecline"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:background="@drawable/dismiss"
+        android:layout_gravity="start"
+        android:layout_margin="7dp"
+        android:contentDescription="Close" />
 
     <TextView
         android:id="@+id/tvRequestText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="send request to join ?"
-        android:textSize="18sp"
-        android:textAlignment="center"
-        android:layout_marginBottom="10dp"
+        android:text="Send request to join teamm?"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#1A751D"
+        android:layout_marginBottom="14dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
         />
 
     <TextView
         android:id="@+id/tvDialogLeagueName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="send request to join ?"
-        android:textSize="14sp"
-        android:textAlignment="center"
-        android:layout_marginBottom="5dp"
-        />
+        android:text="League Name"
+        android:textSize="20sp"
+        android:layout_marginBottom="8dp" />
 
     <TextView
         android:id="@+id/tvDialogDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="send request to join ?"
-        android:textSize="14sp"
-        android:textAlignment="center"
-        android:layout_marginBottom="5dp"
-        />
+        android:text="Description"
+        android:textSize="20sp"
+        android:layout_marginBottom="8dp" />
 
     <TextView
         android:id="@+id/tvDialogCapacity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="send request to join ?"
-        android:textSize="14sp"
-        android:textAlignment="center"
-        android:layout_marginBottom="5dp"
-        />
+        android:text="Capacity"
+        android:textSize="20sp"
+        android:layout_marginBottom="8dp" />
 
     <TextView
         android:id="@+id/tvDialogAdvancers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="send request to join ?"
-        android:textSize="14sp"
-        android:textAlignment="center"
-        android:layout_marginBottom="5dp"
-        />
+        android:text="Advancers"
+        android:textSize="20sp"
+        android:layout_marginBottom="8dp" />
 
     <TextView
         android:id="@+id/tvDialogRelegation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="send request to join ?"
-        android:textSize="14sp"
-        android:textAlignment="center"
-        android:layout_marginBottom="5dp"
-        />
+        android:text="Relegation"
+        android:textSize="20sp"
+        android:layout_marginBottom="16dp" />
 
 
-
-    <ImageView
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:id="@+id/ivDialogLeagueLogo"
+    <androidx.cardview.widget.CardView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_gravity="center"
-        />
+        app:cardCornerRadius="1000dp"
+        android:layout_marginBottom="5dp"
+        >
+
+        <ImageView
+            android:id="@+id/ivDialogLeagueLogo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginBottom="24dp"
+            android:src="@drawable/addimage"
+            android:scaleType="fitXY"
+            />
+
+
+    </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/btnAccept"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Accept"
-        android:textColor="@android:color/white"
-        android:layout_marginBottom="10dp"
-        android:layout_gravity="center" />
-
-    <Button
-        android:id="@+id/btnDecline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Decline"
-        android:textColor="@android:color/white"
-        android:layout_gravity="center"
-        />
+        android:text="Send request"
+        android:textSize="20sp"
+        android:backgroundTint="#1A751D"
+        android:layout_marginBottom="16dp" />
 
 </LinearLayout>

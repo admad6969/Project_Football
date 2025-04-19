@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -38,12 +39,13 @@ public class NonLeagueTeam extends AppCompatActivity implements View.OnClickList
     LinearLayout linierframe;
     ArrayList<League> copyLeagueList, leaguesList;
     FirebaseDatabase firebaseDatabase;
-    TextView captain,manager,name, tvDialogLeagueName, tvDialogDescription, tvDialogCapacity, tvDialogAdvancers, tvDialogRelegation ;
+    TextView captain,manager,name, tvDialogLeagueName, tvDialogDescription, tvDialogCapacity, tvDialogAdvancers, tvDialogRelegation, tvLeaguesTitle, tvNoLeagues;
     ImageView logo, leagueLogo, ivDialogLeagueLogo;
     RecyclerView rv;
     Team team;
     EditText etSearch;
-    Button accept,decline,btnSearch, btnChangeLeague;
+    ImageButton ibDecline;
+    Button accept,btnSearch, btnChangeLeague;
     TextView tvRequestTitle, tvLeagueName;
     String uid = FirebaseAuth.getInstance().getUid();
     DatabaseReference refrenceRequests,referenceTeams;
@@ -77,6 +79,8 @@ public class NonLeagueTeam extends AppCompatActivity implements View.OnClickList
         builder.setView(dialogView);
         dialog = builder.create();
 
+        tvNoLeagues = (TextView) findViewById(R.id.tvNoLeagues);
+        tvLeaguesTitle = (TextView) findViewById(R.id.tvleaguesTitle);
         rv = (RecyclerView) findViewById(R.id.rv);
         linierframe = (LinearLayout) findViewById(R.id.linier2);
         name = (TextView) findViewById(R.id.tvTeamName);
@@ -172,7 +176,11 @@ public class NonLeagueTeam extends AppCompatActivity implements View.OnClickList
                             }
                         }
                     }
-
+                }
+                if (leaguesList.size()==0)
+                {
+                    tvNoLeagues.setVisibility(View.VISIBLE);
+                    rv.setVisibility(View.GONE);
                 }
                 Leagues_Adapter adapter = new Leagues_Adapter(NonLeagueTeam.this, leaguesList, new Leagues_Adapter.OnItemClickListener() {
                     @Override
@@ -244,7 +252,7 @@ public void getRequests(League league)
         getRequests(league);
 
         accept = (Button) dialogView.findViewById(R.id.btnAccept);
-        decline = (Button) dialogView.findViewById(R.id.btnDecline);
+        ibDecline = (ImageButton) dialogView.findViewById(R.id.ibDecline);
         tvRequestTitle = (TextView) dialogView.findViewById(R.id.tvRequestText);
         tvDialogLeagueName = (TextView) dialogView.findViewById(R.id.tvDialogLeagueName);
         tvDialogDescription = (TextView) dialogView.findViewById(R.id.tvDialogDescription);
@@ -255,11 +263,11 @@ public void getRequests(League league)
 
         selectedLeague = league;
 
-        tvDialogLeagueName.setText(selectedLeague.getLeagueName());
-        tvDialogDescription.setText(selectedLeague.getDescription());
-        tvDialogCapacity.setText(Integer.toString(selectedLeague.getCapacity()));
-        tvDialogAdvancers.setText(Integer.toString(selectedLeague.getAdvancers()));
-        tvDialogRelegation.setText(Integer.toString(selectedLeague.getRelegation()));
+        tvDialogLeagueName.setText("league name: " + selectedLeague.getLeagueName());
+        tvDialogDescription.setText("description: " + selectedLeague.getDescription());
+        tvDialogCapacity.setText("team capacity: " + Integer.toString(selectedLeague.getCapacity()));
+        tvDialogAdvancers.setText("teams advancing: " +  Integer.toString(selectedLeague.getAdvancers()));
+        tvDialogRelegation.setText("teams relegated: " + Integer.toString(selectedLeague.getRelegation()));
         ivDialogLeagueLogo.setImageBitmap(selectedLeague.picToBitmap());
 
         tvRequestTitle.setText("send request to join " + selectedLeague.getLeagueName() + " ?");
@@ -268,7 +276,7 @@ public void getRequests(League league)
 
         accept.setOnClickListener(this);
 
-        decline.setOnClickListener(this);
+        ibDecline.setOnClickListener(this);
 
     }
     public void getTeam ()
@@ -352,7 +360,8 @@ public void getRequests(League league)
                 else
                     getLeagueBySearch(search);
             }
-            if (v == accept) {
+            if (v == accept)
+            {
                 teamsList.remove(findTeamLocationByname(team.getTeamName(), teamsList));
                 team.setInLeague(selectedLeague);
                 teamsList.add(team);
@@ -370,6 +379,7 @@ public void getRequests(League league)
                 dialog.dismiss();
 
                 linierframe.setVisibility(View.VISIBLE);
+                tvLeaguesTitle.setVisibility(View.GONE);
                 rv.setVisibility(View.GONE);
                 btnSearch.setVisibility(View.GONE);
                 etSearch.setVisibility(View.GONE);
@@ -377,10 +387,12 @@ public void getRequests(League league)
                 tvLeagueName.setText(selectedLeague.getLeagueName());
                 leagueLogo.setImageBitmap(selectedLeague.picToBitmap());
             }
-            if (v == decline) {
+            if (v == ibDecline)
+            {
                 dialog.dismiss();
             }
-            if (v == btnChangeLeague) {
+            if (v == btnChangeLeague)
+            {
                 team.setInLeague(new League());
                 teamsList.remove(findTeamLocationByname(team.getTeamName(), teamsList));
                 teamsList.add(team);
@@ -390,6 +402,7 @@ public void getRequests(League league)
                 refrenceRequests.setValue(requests);
 
                 linierframe.setVisibility(View.GONE);
+                tvLeaguesTitle.setVisibility(View.VISIBLE);
                 rv.setVisibility(View.VISIBLE);
                 btnSearch.setVisibility(View.VISIBLE);
                 etSearch.setVisibility(View.VISIBLE);

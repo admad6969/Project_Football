@@ -93,9 +93,10 @@
 
                 <ImageView
                     android:id="@+id/ivLogo"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
-                    android:background="#EEEEEE"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/addimage"
+                    android:scaleType="fitXY"
                     />
 
             </androidx.cardview.widget.CardView>

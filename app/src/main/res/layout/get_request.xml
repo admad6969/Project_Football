@@ -34,7 +34,8 @@
         android:textStyle="bold"
         android:textColor="#1A751D"
         android:layout_marginBottom="8dp"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        />
 
     <TextView
         android:id="@+id/tvDialogManager"

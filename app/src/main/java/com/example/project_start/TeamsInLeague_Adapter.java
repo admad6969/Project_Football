@@ -56,7 +56,7 @@ public class TeamsInLeague_Adapter extends RecyclerView.Adapter<TeamsInLeague_Ad
             {
                 holder.llBack.setBackgroundColor(Color.rgb(206, 137, 70));
             }
-            else if (position <= team.getInLeague().getAdvancers() && position > 2)
+            else if (position <= (team.getInLeague().getAdvancers()-1) && position > 2)
             {
                 holder.llBack.setBackgroundColor(Color.rgb(176, 216, 230));
             }

@@ -6,13 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".My_Teams">
+    tools:context=".My_Teams"
+    >
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="League Name"
-        android:textSize="36sp"
+        android:textSize="45sp"
         android:textStyle="bold"
         android:textColor="#1A751D"
         android:layout_marginTop="16dp"
@@ -35,7 +36,6 @@
             android:layout_weight="1"
             android:orientation="vertical"
             android:padding="8dp"
-            android:layout_marginEnd="8dp"
             android:layout_gravity="top"
             android:background="#F5F5F5"
 
@@ -45,11 +45,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Joining Requests"
-                android:textSize="18sp"
+                android:textSize="22sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:layout_marginBottom="8dp"
                 android:layout_gravity="center"
+                />
+
+            <TextView
+                android:id="@+id/tvNoRequests"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="no requests"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginTop="25dp"
+                android:layout_gravity="center"
+                android:visibility="gone"
                 />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -58,7 +71,9 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:background="#FFFFFF"
-                android:padding="4dp" />
+                android:padding="4dp"
+                android:visibility="visible"
+                />
         </LinearLayout>
 
         <LinearLayout
@@ -67,7 +82,6 @@
             android:layout_weight="1"
             android:orientation="vertical"
             android:padding="8dp"
-            android:layout_marginStart="8dp"
             android:layout_gravity="top"
             android:background="#F5F5F5"
             >
@@ -76,11 +90,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Teams in League"
-                android:textSize="18sp"
+                android:textSize="22sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:layout_marginBottom="8dp"
                 android:layout_gravity="center"
+                />
+
+            <TextView
+                android:id="@+id/tvNoTeams"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="no teams"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginTop="25dp"
+                android:layout_gravity="center"
+                android:visibility="gone"
                 />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -89,8 +116,11 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:background="#FFFFFF"
-                android:padding="4dp" />
+                android:padding="4dp"
+                />
+
         </LinearLayout>
+
     </LinearLayout>
 
     <Button

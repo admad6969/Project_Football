@@ -41,7 +41,7 @@ public class NonStartedLeague extends AppCompatActivity implements View.OnClickL
     View dialogView;
     AlertDialog dialog;
     AlertDialog.Builder builder;
-    TextView tvTitle,tvCaptain,tvManager, tvLeagueName;
+    TextView tvTitle,tvCaptain,tvManager, tvLeagueName, tvNoRequests, tvNoTeams;
     Button btnDecline, btnAccept, btnStartLeague, btnRemoveTeam;
     ImageView ivTeamLogo;
     Team selectedTeam;
@@ -72,6 +72,8 @@ public class NonStartedLeague extends AppCompatActivity implements View.OnClickL
         rvTeamsInLeague.setHasFixedSize(true);
         rvTeamsInLeague.setLayoutManager(new LinearLayoutManager(this));
 
+        tvNoRequests = (TextView) findViewById(R.id.tvNoRequests);
+        tvNoTeams = (TextView) findViewById(R.id.tvNoTeams);
         btnStartLeague = (Button) findViewById(R.id.btnStart);
         tvLeagueName = (TextView) findViewById(R.id.tvLeagueName);
 
@@ -130,6 +132,8 @@ public class NonStartedLeague extends AppCompatActivity implements View.OnClickL
                 {
                     if (!(tempTeamList.get(0).getTeamName().equals("")))
                     {
+                        tvNoTeams.setVisibility(View.GONE);
+                        rvTeamsInLeague.setVisibility(View.VISIBLE);
                         TeamsInLeague_Adapter adapter2 = new TeamsInLeague_Adapter(NonStartedLeague.this, tempTeamList, new TeamsInLeague_Adapter.OnItemClickListener() {
                             @Override
                             public void onItemClick(Team team) {
@@ -140,26 +144,14 @@ public class NonStartedLeague extends AppCompatActivity implements View.OnClickL
                     }
                     else
                     {
-                        ArrayList<Team> emptyList = new ArrayList<>();
-                        TeamsInLeague_Adapter adapter2 = new TeamsInLeague_Adapter(NonStartedLeague.this, emptyList, new TeamsInLeague_Adapter.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(Team team) {
-                                onClickTeams(team);
-                            }
-                        });
-                        rvTeamsInLeague.setAdapter(adapter2);
+                        tvNoTeams.setVisibility(View.VISIBLE);
+                        rvTeamsInLeague.setVisibility(View.GONE);
                     }
                 }
                 else
                 {
-                    ArrayList<Team> emptyList = new ArrayList<>();
-                    TeamsInLeague_Adapter adapter2 = new TeamsInLeague_Adapter(NonStartedLeague.this, emptyList, new TeamsInLeague_Adapter.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(Team team) {
-                            onClickTeams(team);
-                        }
-                    });
-                    rvTeamsInLeague.setAdapter(adapter2);
+                    tvNoTeams.setVisibility(View.VISIBLE);
+                    rvTeamsInLeague.setVisibility(View.GONE);
                 }
 
             }
@@ -184,14 +176,23 @@ public class NonStartedLeague extends AppCompatActivity implements View.OnClickL
                         requests.add(team);
 
                 }
-                TeamsInLeague_Adapter adapter = new TeamsInLeague_Adapter(NonStartedLeague.this, requests, new TeamsInLeague_Adapter.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(Team team)
-                    {
-                        onClickRequests(team);
-                    }
-                });
-                rvRequests.setAdapter(adapter);
+                if (requests.size()!=0)
+                {
+                    tvNoRequests.setVisibility(View.GONE);
+                    rvRequests.setVisibility(View.VISIBLE);
+                    TeamsInLeague_Adapter adapter = new TeamsInLeague_Adapter(NonStartedLeague.this, requests, new TeamsInLeague_Adapter.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(Team team) {
+                            onClickRequests(team);
+                        }
+                    });
+                    rvRequests.setAdapter(adapter);
+                }
+                else
+                {
+                    tvNoRequests.setVisibility(View.VISIBLE);
+                    rvRequests.setVisibility(View.GONE);
+                }
             }
 
             @Override
@@ -349,8 +350,8 @@ public class NonStartedLeague extends AppCompatActivity implements View.OnClickL
         btnDecline = (Button) dialogView.findViewById(R.id.btnDecline);
 
         tvTitle.setText(team.getTeamName() + " wants to join your league!");
-        tvManager.setText(team.getManager());
-        tvCaptain.setText(team.getManager());
+        tvManager.setText("manager: " + team.getManager());
+        tvCaptain.setText("captain: " + team.getCaptain());
         ivTeamLogo.setImageBitmap(team.picToBitmap());
 
         btnAccept.setVisibility(View.VISIBLE);

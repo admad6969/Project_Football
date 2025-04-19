@@ -195,6 +195,7 @@ public class Create_League extends AppCompatActivity implements View.OnClickList
         }
         else if (v==btnLogo)
         {
+            btnLogo.setText("Change Logo");
             Intent intent = new Intent(MediaStore.ACTION_PICK_IMAGES);
             activityResultLauncherUpload.launch(intent);
         }

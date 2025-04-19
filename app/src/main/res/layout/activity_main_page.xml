@@ -75,7 +75,6 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@drawable/dismiss"
-            android:contentDescription="Dismiss"
             android:layout_margin="10dp" />
 
         <TextView

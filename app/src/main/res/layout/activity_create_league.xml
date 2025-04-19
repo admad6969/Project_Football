@@ -105,7 +105,8 @@
                 android:layout_marginTop="16dp"
                 android:backgroundTint="#1A751D"
                 android:textColor="#FFFFFF"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+                />
 
 
             <androidx.cardview.widget.CardView
@@ -118,10 +119,11 @@
 
                 <ImageView
                     android:id="@+id/ivLogo"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_gravity="center"
-                    android:background="#EEEEEE"
+                    android:background="@drawable/addimage"
+                    android:scaleType="fitXY"
                     />
 
 

@@ -31,6 +31,7 @@
       android:textSize="24sp"
       android:layout_marginTop="8dp"
       android:layout_gravity="center"
+      android:textColor="@color/black"
       />
 
   <TextView
@@ -39,6 +40,7 @@
       android:layout_height="wrap_content"
       android:text="Team manager"
       android:textSize="24sp"
+      android:textColor="@color/black"
       android:layout_marginTop="8dp"
       android:layout_gravity="center"
       />
@@ -54,14 +56,26 @@
 
     <ImageView
         android:id="@+id/ivLogo"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:src="@drawable/addimage"
         android:layout_gravity="center"
         android:scaleType="fitXY"
         />
 
   </androidx.cardview.widget.CardView>
+
+  <TextView
+      android:id="@+id/tvleaguesTitle"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="available teams:"
+      android:textSize="24dp"
+      android:textStyle="bold"
+      android:textColor="#1A751D"
+      android:layout_gravity="center"
+      android:layout_marginTop="16dp"
+      />
 
   <EditText
       android:id="@+id/etSearch"
@@ -100,6 +114,19 @@
         android:layout_marginBottom="10dp"
         android:visibility="visible"
         android:background="#F5F5F5"
+        />
+
+    <TextView
+        android:id="@+id/tvNoLeagues"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No teams available"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_gravity="top|center"
+        android:layout_marginTop="16dp"
+        android:visibility="gone"
         />
 
     <LinearLayout

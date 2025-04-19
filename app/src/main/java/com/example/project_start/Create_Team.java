@@ -146,8 +146,9 @@ public class Create_Team extends AppCompatActivity implements View.OnClickListen
         }
         else if (v==btnLogo)
         {
-        Intent intent = new Intent(MediaStore.ACTION_PICK_IMAGES);
-        activityResultLauncherUpload.launch(intent);
+            btnLogo.setText("Change Logo");
+            Intent intent = new Intent(MediaStore.ACTION_PICK_IMAGES);
+            activityResultLauncherUpload.launch(intent);
         }
         if (v == btnCreateLeague)
         {
